@@ -7,7 +7,7 @@ var API_SERVER = "https://mockery-recipe.herokuapp.com";
 // _ prefix to indicate it shouldn't be used often
 function _api(options) {
   let modifiedOptions = { ...options };
-  modifiedOptions["uri"] = API_SERVER + modifiedOptions["uri"];
+  modifiedOptions["url"] = API_SERVER + modifiedOptions["url"];
   return m.request(modifiedOptions);
 }
 
@@ -36,6 +36,7 @@ var RecipesViewController = {
 }
 
 var RecipesView = {
+  title: "Recipes",
   oninit: function() {
     return RecipesViewController.loadList();
   },
@@ -60,7 +61,7 @@ function make_recipe_row(recipe) {
       "div",
       { class: "pure-u-1-1" },
       m("div", { class: "padded" }, [
-        m("h3", recipe.name),
+        m("h3", recipe.title),
         m("h4", recipe.description)
       ])
     )
@@ -264,12 +265,44 @@ var BuildPage = ToppingsPage;
 
 var root = document.getElementById("main");
 
-m.route(root, "/sizes", {
+var views = {
   "/toppings": RecipesView,
   "/prices": RecipesView,
   "/sizes": RecipesView,
   "/build": RecipesView
-});
+};
+
+m.route(root, "/sizes", views);
+
+var MenuView = {
+  view: function() {
+    return Object.entries(views).map((entry) => {
+      let route = entry[0];
+      let view = entry[1];
+      let title = view.title;
+      return m("li", {class: "pure-menu-item"},
+              m("a", {href: "#!" + route, class: "pure-menu-link"}), title);
+    })
+    
+//     <li class="pure-menu-item">
+//               <a href="#!/toppings" class="pure-menu-link">Toppings</a>
+//             </li>
+//             <li class="pure-menu-item pure-menu-selected">
+//               <a href="#!/prices" class="pure-menu-link">Prices</a>
+//             </li>
+
+//             <li class="pure-menu-item">
+//               <a href="#!/sizes" class="pure-menu-link">Sizes</a>
+//             </li>
+
+//             <li class="pure-menu-item">
+//               <a href="#!/build" class="pure-menu-link">Build</a>
+//             </li>
+
+  }
+}
+
+m.mount(document.getElementById("menuList"), MenuView);
 
 /* Menu JS */
 (function(window, document) {
