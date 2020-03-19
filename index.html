@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Hello!</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-    
-    <!-- import the webpage's javascript file -->
+    <title>Welcome to Mockery Pizza!</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+      integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
+      crossorigin="anonymous"
+    />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="https://unpkg.com/mithril/mithril.js" defer></script>
     <script src="/script.js" defer></script>
-  </head>  
+  </head>
   <body>
-    <h1>Hi there!</h1>
-    
-    <p>
-      I'm your cool new webpage. Made with <a href="https://glitch.com">Glitch</a>!
-    </p>
+    <div id="layout">
+      <!-- Menu toggle -->
+      <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+      </a>
 
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
+      <div id="menu">
+        <div class="pure-menu">
+          <a class="pure-menu-heading" href="#">Mockery</a>
+
+          <ul class="pure-menu-list">
+            <li class="pure-menu-item">
+              <a href="#!/toppings" class="pure-menu-link">Toppings</a>
+            </li>
+            <li class="pure-menu-item pure-menu-selected">
+              <a href="#!/prices" class="pure-menu-link">Prices</a>
+            </li>
+
+            <li class="pure-menu-item">
+              <a href="#!/sizes" class="pure-menu-link">Sizes</a>
+            </li>
+
+            <li class="pure-menu-item">
+              <a href="#!/build" class="pure-menu-link">Build</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="main"></div>
+    </div>
   </body>
 </html>
