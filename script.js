@@ -1,9 +1,71 @@
 "use strict";
 /* global m */
 
-var API_SERVER = "https://mockery-recipe.herokuapp.com/";
+var API_SERVER = "https://mockery-recipe.herokuapp.com";
 
-function request(options)
+// Simple helper so we don't have to repeat the API_SERVER everywhere
+// _ prefix to indicate it shouldn't be used often
+function _api(options) {
+  let modifiedOptions = { ...options };
+  modifiedOptions["uri"] = API_SERVER + modifiedOptions["uri"];
+  return m.request(modifiedOptions);
+}
+
+var Api = {
+  getRecipes: function() {
+    return _api({
+      method: "GET",
+      url: "/recipe"
+    })
+  },
+  getRecipe: function(id) {
+    return _api({
+      method: "GET",
+      url: "/recipe/" + id
+    })
+  }
+}
+
+var RecipesViewController = {
+  list: [],
+  loadList: function() {
+    return Api.getRecipes().then((result) => {
+      RecipesViewController.list = result;
+    })
+  }
+}
+
+var RecipesView = {
+  oninit: function() {
+    return RecipesViewController.loadList();
+  },
+  view: function() {
+    return [
+      m("div", { class: "header" }, [
+        m("h1", "Mockery Recipes"),
+        m("h2", "Recipes")
+      ]),
+      m("div", { class: "content" }, make_recipe_rows(RecipesViewController.list))
+    ];
+  }
+};
+
+function make_recipe_rows(recipe_list) {
+  return m("div", { class: "pure-g" }, recipe_list.map(make_recipe_row));
+}
+
+function make_recipe_row(recipe) {
+    return [
+    m(
+      "div",
+      { class: "pure-u-1-1" },
+      m("div", { class: "padded" }, [
+        m("h3", recipe.name),
+        m("h4", recipe.description)
+      ])
+    )
+  ];
+}
 
 var Toppings = {
   list: [],
@@ -203,10 +265,10 @@ var BuildPage = ToppingsPage;
 var root = document.getElementById("main");
 
 m.route(root, "/sizes", {
-  "/toppings": ToppingsPage,
-  "/prices": PricesPage,
-  "/sizes": SizesPage,
-  "/build": BuildPage
+  "/toppings": RecipesView,
+  "/prices": RecipesView,
+  "/sizes": RecipesView,
+  "/build": RecipesView
 });
 
 /* Menu JS */
