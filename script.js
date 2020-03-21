@@ -11,7 +11,7 @@ function _api(options) {
   return m.request(modifiedOptions);
 }
 
-var Api = {
+var Api = { // This is effectively the "model" of your frontend
   getRecipes: function() {
     return _api({
       method: "GET",
@@ -26,14 +26,24 @@ var Api = {
   }
 };
 
+function apiGetRecipes() {
+  
+}
+
 // Begin ViewControllers
 
 var RecipesViewController = {
   list: [],
+  recipes: {},
   loadList: function() {
     return Api.getRecipes().then(result => {
       RecipesViewController.list = result;
     });
+  },
+  loadRecipe: function(recipe_id) {
+    return Api.getRecipe(recipe_id).then(result => {
+      RecipesViewController.recipes[recipe_id] = result;
+    })
   }
 };
 
