@@ -26,10 +26,6 @@ var Api = { // This is effectively the "model" of your frontend
   }
 };
 
-function apiGetRecipes() {
-  
-}
-
 // Begin ViewControllers
 
 var RecipesViewController = {
