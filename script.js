@@ -11,7 +11,8 @@ function _api(options) {
   return m.request(modifiedOptions);
 }
 
-var Api = { // This is effectively the "model" of your frontend
+var Api = {
+  // This is effectively the "model" of your frontend
   getRecipes: function() {
     return _api({
       method: "GET",
@@ -39,7 +40,7 @@ var RecipesViewController = {
   loadRecipe: function(recipe_id) {
     return Api.getRecipe(recipe_id).then(result => {
       RecipesViewController.recipes[recipe_id] = result;
-    })
+    });
   }
 };
 
