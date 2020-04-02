@@ -51,22 +51,7 @@ var RecipesView = {
   },
   view: function() {
     return [
-      m("div", { class: "header" }, [
-        m("h1", "Recipe App"),
-        
-        m("div", [
-          m("h2", "User Login"),
-          m("input"),
-          m("input"),
-        ]),
-        
-        m("h2", "Recipes")
-      ]),
-      m(
-        "div",
-        { class: "content" },
-        _make_recipe_rows(RecipesViewController.list)
-      )
+      <p1
     ];
   }
 };
