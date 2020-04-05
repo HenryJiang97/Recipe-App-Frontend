@@ -83,7 +83,7 @@ var RecipesViewController = {
     });
   }
 };
-
+//
 var RecipesView = {
   title: "Recipes",
   oninit: function() {
@@ -128,6 +128,7 @@ var RecipeView = {
 function _make_recipe_rows(recipe_list) {
   return m("div", { class: "pure-g" }, recipe_list.map(_make_recipe_row));
 }
+
 
 function _make_recipe_row(recipe) {
   return [
