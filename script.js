@@ -53,18 +53,11 @@ var RecipesView = {
     return [
       m("div", { class: "header" }, [
         m("h1", "Recipe App"),
-        
-        m("div", [
-          m("h2", "User Login"),
-          m("input"),
-          m("input"),
-        ]),
-        
-        m("div", [
-          m("button", "Login"),
-          m("button", "Register"),
-        ]),
-        
+
+        m("div", [m("h2", "User Login"), m("input"), m("input")]),
+
+        m("div", [m("button", "Login"), m("button", "Register")]),
+
         m("h2", "Recipes")
       ]),
       m(
