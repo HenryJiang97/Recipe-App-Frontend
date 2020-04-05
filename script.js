@@ -109,8 +109,9 @@ var RecipesView = {
   }
 };
 
-function SingleRecipeView (recipe){
-  m("div", { class: "header" },  m("h1", recipe.title),
+function singleRecipeView (recipe){
+  m("div", { class: "header" },  m("h1", recipe.title)), m("div",
+        { class: "content" }, m("h1", recipe.description))
   
 }
 
@@ -136,7 +137,8 @@ function _make_recipe_row(recipe) {
 var content = document.getElementById("main");
 
 var views = {
-  "/recipes": RecipesView
+  "/recipes": RecipesView,
+  "/recipes/1": singleRecipeView(recipe_list[0])
 };
 
 m.route(content, "/recipes", views);
