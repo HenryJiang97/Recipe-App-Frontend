@@ -13,40 +13,40 @@ function _api(options) {
 
 // https://glitch.com/edit/#!/pouchdb-server?path=server.js:19:0
 
-const PouchDB = require("pouchdb");
-const express = require("express");
-const bodyParser = require("body-parser");
+// const PouchDB = require("pouchdb");
+// const express = require("express");
+// const bodyParser = require("body-parser");
 
-var app = express()
-
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/', require('express-pouchdb')(LocalPouchDB))
-var LocalPouchDB = PouchDB.defaults({ prefix: ".data" });
-var db = new LocalPouchDB("recipe-tba");
-
-function addRecipe(id, title, description){
-  var recipe = {
-    _id : id,
-    title: title,
-    description: description
-  };
-  db.put(recipe, function callback(err,result){
-    if(!err){
-      console.log('Work!');
-    }
-  });
-}
-
-function showRecipes(){
-  db.allDocs()
-}
+// var app = express()
 
 
-// listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-  console.log('Your pouchdb is listening on port ' + listener.address().port);
-});
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use('/', require('express-pouchdb')(LocalPouchDB))
+// var LocalPouchDB = PouchDB.defaults({ prefix: ".data" });
+// var db = new LocalPouchDB("recipe-tba");
+
+// function addRecipe(id, title, description){
+//   var recipe = {
+//     _id : id,
+//     title: title,
+//     description: description
+//   };
+//   db.put(recipe, function callback(err,result){
+//     if(!err){
+//       console.log('Work!');
+//     }
+//   });
+// }
+
+// function showRecipes(){
+//   db.allDocs()
+// }
+
+
+// // listen for requests :)
+// var listener = app.listen(process.env.PORT, function () {
+//   console.log('Your pouchdb is listening on port ' + listener.address().port);
+// });
 
 
 
@@ -108,6 +108,11 @@ var RecipesView = {
     ];
   }
 };
+
+function SingleRecipeView (recipe){
+  m("div", { class: "header" },  m("h1", recipe.title),
+  
+}
 
 function _make_recipe_rows(recipe_list) {
   return m("div", { class: "pure-g" }, recipe_list.map(_make_recipe_row));
