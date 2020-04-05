@@ -25,6 +25,17 @@ app.use('/', require('express-pouchdb')(LocalPouchDB))
 var LocalPouchDB = PouchDB.defaults({ prefix: ".data" });
 var db = new LocalPouchDB("recipe-tba");
 
+
+db.put({
+  _id: 'mydoc',
+  title: 'Heroes'
+}).then(function (response) {
+  // handle response
+}).catch(function (err) {
+  console.log(err);
+});
+
+
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your pouchdb is listening on port ' + listener.address().port);
