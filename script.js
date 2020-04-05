@@ -35,11 +35,22 @@ db.put({
   console.log(err);
 });
 
+function create_documents() {
+  return add_images([
+    {
+      _id: "topping/pepperoni",
+      name: "Pepperoni",
+      price: "pricing/meat",
+      description: "Imported Pepperoni from Italy."
+    },
+
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your pouchdb is listening on port ' + listener.address().port);
 });
+
+
 
 
 var Api = {
