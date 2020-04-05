@@ -11,9 +11,25 @@ function _api(options) {
   return m.request(modifiedOptions);
 }
 
-var LocalPouchDB = PouchDB.defaults({ prefix: ".data" });
+// https://glitch.com/edit/#!/pouchdb-server?path=server.js:19:0
 
+const PouchDB = require("pouchdb");
+const express = require("express");
+const bodyParser = require("body-parser");
+
+var app = express()
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/', require('express-pouchdb')(LocalPouchDB))
+var LocalPouchDB = PouchDB.defaults({ prefix: ".data" });
 var db = new LocalPouchDB("recipe-tba");
+
+// listen for requests :)
+var listener = app.listen(process.env.PORT, function () {
+  console.log('Your pouchdb is listening on port ' + listener.address().port);
+});
+
 
 var Api = {
   // This is effectively the "model" of your frontend
