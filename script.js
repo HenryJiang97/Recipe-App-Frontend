@@ -25,24 +25,22 @@ app.use('/', require('express-pouchdb')(LocalPouchDB))
 var LocalPouchDB = PouchDB.defaults({ prefix: ".data" });
 var db = new LocalPouchDB("recipe-tba");
 
+function addRecipe(id, title, description){
+  var recipe = {
+    _id : id,
+    title: title,
+    description: description
+  };
+  db.put(recipe, function callback(err,result){
+    if(!err){
+      console.log('Work!');
+    }
+  });
+}
 
-db.put({
-  _id: 'mydoc',
-  title: 'Heroes'
-}).then(function (response) {
-  // handle response
-}).catch(function (err) {
-  console.log(err);
-});
-
-function create_documents() {
-  return add_images([
-    {
-      _id: "topping/pepperoni",
-      name: "Pepperoni",
-      price: "pricing/meat",
-      description: "Imported Pepperoni from Italy."
-    },
+function showRecipes(){
+  db.allDocs()
+}
 
 
 // listen for requests :)
