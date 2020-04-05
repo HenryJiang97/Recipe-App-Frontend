@@ -1,7 +1,7 @@
 "use strict";
 /* global m */
 
-var API_SERVER = "https://radiant-brushlands-86774.herokuapp.com/";
+var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
 
 // Simple helper so we don't have to repeat the API_SERVER everywhere
 // _ prefix to indicate it's a helper function
@@ -10,6 +10,10 @@ function _api(options) {
   modifiedOptions["url"] = API_SERVER + modifiedOptions["url"];
   return m.request(modifiedOptions);
 }
+
+var LocalPouchDB = PouchDB.defaults({ prefix: ".data" });
+
+var db = new LocalPouchDB("recipe-tba");
 
 var Api = {
   // This is effectively the "model" of your frontend
