@@ -1,7 +1,7 @@
 "use strict";
 /* global m */
 
-var API_SERVER = "https://mockery-recipe.herokuapp.com";
+var API_SERVER = "https://radiant-brushlands-86774.herokuapp.com/";
 
 // Simple helper so we don't have to repeat the API_SERVER everywhere
 // _ prefix to indicate it's a helper function
