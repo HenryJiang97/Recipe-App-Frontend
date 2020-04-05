@@ -60,6 +60,11 @@ var RecipesView = {
           m("input"),
         ]),
         
+        m("div", [
+          m("button", "Login"),
+          m("button", "Register"),
+        ]),
+        
         m("h2", "Recipes")
       ]),
       m(
