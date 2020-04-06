@@ -110,15 +110,15 @@ var RecipesView = {
   }
 };
 
-var RecipeView = {
-  title: "A Recipe",
-  view: function(){
-    return [
-      m("div", { class: "header" },  m("h1", "A title")), 
-            m("div",{ class: "content" }, m("h2", "A description"))
-              ];
-  }
-};
+// var RecipeView = {
+//   title: "A Recipe",
+//   view: function(){
+//     return [
+//       m("div", { class: "header" },  m("h1", "A title")), 
+//             m("div",{ class: "content" }, m("h2", "A description"))
+//               ];
+//   }
+// };
 
 // function singleRecipeView (recipe){
 //   m("div", { class: "header" },  m("h1", recipe.title)), m("div",
@@ -139,12 +139,13 @@ function makeRecipe(recipe){
 }
 
 function make_recipe_object(recipe){
-  return  Test = {
+  var obj = {
   title: recipe.title,
   view: function(){
     return makeRecipe(recipe);
   }
-}
+};
+  return obj;
   
 }
 function _make_recipe_row(recipe) {
@@ -176,7 +177,6 @@ var RecipeTest = {
 }
 var views = {
   "/recipes": RecipesView,
-  "/1": RecipeView,
   "/2": RecipeTest
 };
 
@@ -198,7 +198,6 @@ why();
 
 
 m.route(content, "/recipes", views);
-// m.route(content, "/1", views);
 
 // Menu toggle code roughly adapted to Mithril
 var layout = document.getElementById("layout"),
