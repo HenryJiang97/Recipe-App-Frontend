@@ -173,6 +173,7 @@ function _make_recipe_row(recipe) {
 
 // End ViewControllers
 
+
 var content = document.getElementById("main");
 
 // Test of make recipe function
