@@ -66,7 +66,8 @@ var Api = {
     });
   }
 };
-
+var t = Api.getRecipes()
+console.log(t)
 // Begin ViewControllers
 
 var RecipesViewController = {
@@ -188,8 +189,7 @@ function make_all_recipes(recipe_list){
 
 
 function why(){
-  RecipesViewController.loadList()
-  make_all_recipes(RecipesViewController.list)
+  RecipesViewController.loadList().then(make_all_recipes(RecipesViewController.list));
 }
 why();
 
