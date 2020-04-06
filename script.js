@@ -139,7 +139,7 @@ function makeRecipe(recipe){
 }
 
 function make_recipe_object(recipe){
-  return RecipeTest = {
+  return  Test = {
   title: recipe.title,
   view: function(){
     return makeRecipe(recipe);
@@ -182,14 +182,17 @@ var views = {
 
 function make_all_recipes(recipe_list){
   console.log(recipe_list)
+  var i = 0
     for(const recipe of recipe_list){
-      views['recipe'] = make_recipe_object(recipe)
+      views[i] = make_recipe_object(recipe)
+      i++
   }
 }  
 
 
-function why(){
-  RecipesViewController.loadList().then(make_all_recipes(RecipesViewController.list));
+async function why(){
+  var x = await RecipesViewController.loadList()
+  make_all_recipes(RecipesViewController.list)
 }
 why();
 
