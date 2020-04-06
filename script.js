@@ -155,10 +155,19 @@ function _make_recipe_row(recipe) {
 var content = document.getElementById("main");
 
 var recipe_list = RecipesViewController.list
+var RecipeTest = {
+  title: "Test",
+  oninit: function() {
+    return RecipesViewController.loadList();
+  },
+  view: function(){
+    return makeRecipe(RecipesViewController.list[1]);
+  }
+}
 var views = {
   "/recipes": RecipesView,
   "/1": RecipeView,
-  // "/2": makeRecipe(recipe_list[0])
+  "/2": RecipeTest
 };
 
 m.route(content, "/recipes", views);
