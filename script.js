@@ -157,6 +157,7 @@ function make_recipe_object(recipe){
   return obj;
 }
 
+// Recipes list displayed on main page
 function _make_recipe_row(recipe) {
   return [
     m(
