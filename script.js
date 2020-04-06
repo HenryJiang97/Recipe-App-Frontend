@@ -163,7 +163,6 @@ function _make_recipe_row(recipe) {
 
 var content = document.getElementById("main");
 
-var recipe_list = RecipesViewController.list
 
 var RecipeTest = {
   title: "Test",
@@ -181,13 +180,17 @@ var views = {
 };
 
 function make_all_recipes(recipe_list){
+  console.log(recipe_list)
     for(const recipe of recipe_list){
-      views[recipe] = make_recipe_object(recipe)
+      views['recipe'] = make_recipe_object(recipe)
   }
-  
+}  
+
+function why(){
+  RecipesViewController.loadList()
+  make_all_recipes(RecipesViewController.list)
 }
-RecipesViewController.loadlist()
-make_all_recipes(RecipesViewController.list)
+why();
 
 
 m.route(content, "/recipes", views);
