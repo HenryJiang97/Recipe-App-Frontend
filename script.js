@@ -130,7 +130,7 @@ function _make_recipe_rows(recipe_list) {
 }
 
 function makeRecipe(recipe){
-      return [
+  return [
       m("div", { class: "header" },  m("h1", recipe.title)), 
             m("div",{ class: "content" }, m("h2", recipe.description))
               ];
@@ -154,10 +154,11 @@ function _make_recipe_row(recipe) {
 
 var content = document.getElementById("main");
 
+var recipe_list = RecipesViewController.list
 var views = {
   "/recipes": RecipesView,
-  "/1": RecipeView
-  "/2": makeRecipe(RecipesViewController.)
+  "/1": RecipeView,
+  // "/2": makeRecipe(recipe_list[0])
 };
 
 m.route(content, "/recipes", views);
