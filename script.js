@@ -141,10 +141,13 @@ function makeRecipe(recipe){
 function make_recipe_object(recipe){
   var obj = {
   title: recipe.title,
-  view: function(){
-    return makeRecipe(recipe);
-  }
-};
+  view: function(recipe){
+    return [
+      m("div", { class: "header" },  m("h1", recipe.title)), 
+            m("div",{ class: "content" }, m("h2", recipe.description))
+              ];
+    }
+  };
   return obj;
   
 }
@@ -184,7 +187,9 @@ function make_all_recipes(recipe_list){
   console.log(recipe_list)
   var i = 0
     for(const recipe of recipe_list){
-      views[i] = make_recipe_object(recipe)
+      var title = '/'
+      views[title.concat(String(i))] = make_recipe_object(recipe)
+      console.log(title.concat(String(i)))
       i++
   }
 }  
