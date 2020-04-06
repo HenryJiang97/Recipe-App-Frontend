@@ -86,7 +86,8 @@ var RecipesViewController = {
     });
   }
 };
-//
+
+// Main view of recipes
 var RecipesView = {
   title: "Recipes",
   oninit: function() {
