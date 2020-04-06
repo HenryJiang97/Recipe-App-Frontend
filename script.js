@@ -67,7 +67,9 @@ var Api = {
   }
 };
 var t = Api.getRecipes()
-console.log(t)
+console.log("t:", t)
+
+
 // Begin ViewControllers
 
 var RecipesViewController = {
@@ -137,11 +139,11 @@ function makeRecipe(recipe){
               ];
 
 }
-
+// This function is a problem and I dont know why. It correctly displays the title of the recipe but does not display the body
 function make_recipe_object(recipe){
   var obj = {
   title: recipe.title,
-  view: function(recipe){
+  view: function(){
     return [
       m("div", { class: "header" },  m("h1", recipe.title)), 
             m("div",{ class: "content" }, m("h2", recipe.description))
@@ -168,7 +170,7 @@ function _make_recipe_row(recipe) {
 
 var content = document.getElementById("main");
 
-
+// Test of make recipe function
 var RecipeTest = {
   title: "Test",
   oninit: function() {
@@ -194,12 +196,12 @@ function make_all_recipes(recipe_list){
   }
 }  
 
-
-async function why(){
+// Needs to wait for recipe controller promise
+async function recipe_controller_promise(){
   var x = await RecipesViewController.loadList()
   make_all_recipes(RecipesViewController.list)
 }
-why();
+recipe_controller_promise();
 
 
 m.route(content, "/recipes", views);
