@@ -186,6 +186,7 @@ var RecipeTest = {
     return makeRecipe(RecipesViewController.list[1]);
   }
 }
+
 var views = {
   "/recipes": RecipesView,
   "/2": RecipeTest
