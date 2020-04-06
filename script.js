@@ -137,6 +137,15 @@ function makeRecipe(recipe){
 
 }
 
+function make_recipe_object(recipe){
+  return RecipeTest = {
+  title: recipe.title,
+  view: function(){
+    return makeRecipe(recipe);
+  }
+}
+  
+}
 function _make_recipe_row(recipe) {
   return [
     m(
@@ -155,6 +164,7 @@ function _make_recipe_row(recipe) {
 var content = document.getElementById("main");
 
 var recipe_list = RecipesViewController.list
+
 var RecipeTest = {
   title: "Test",
   oninit: function() {
@@ -169,6 +179,16 @@ var views = {
   "/1": RecipeView,
   "/2": RecipeTest
 };
+
+function make_all_recipes(recipe_list){
+    for(const recipe of recipe_list){
+      views[recipe] = make_recipe_object(recipe)
+  }
+  
+}
+RecipesViewController.loadlist()
+make_all_recipes(RecipesViewController.list)
+
 
 m.route(content, "/recipes", views);
 // m.route(content, "/1", views);
