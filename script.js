@@ -140,6 +140,7 @@ function makeRecipe(recipe){
               ];
 
 }
+
 // This function is a problem and I dont know why. It correctly displays the title of the recipe but does not display the body
 function make_recipe_object(recipe){
   var obj = {
