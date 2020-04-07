@@ -98,11 +98,31 @@ var RecipesView = {
       m("div", { class: "header" }, [
         m("h1", "Recipe App"),
 
+        // User login inputbox
         m("div", [m("h2", "User Login"), m("input"), m("input")]),
 
-        m("div", [m("button", "Login"), m("button", "Register")]),
+        // Login and register buttons
+        m("div", [
+          m("button", {
+            class: "my-button",
+            onclick: function() {
+              console.log("Login button clicked")
+            }
+          },
+            "Login"
+          ),
+          
+          m("button", {
+            class: "my-button",
+            onclick: function() {
+              console.log("Register button clicked")
+            }
+          },
+            "Register"
+          ),
+        ]),
 
-        m("h2", "Recipes")
+        m("h2", "Recipes List")
       ]),
       m(
         "div",
