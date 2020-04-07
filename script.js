@@ -113,21 +113,21 @@ var RecipesView = {
   }
 };
 
-// var RecipeView = {
-//   title: "A Recipe",
-//   view: function(){
-//     return [
-//       m("div", { class: "header" },  m("h1", "A title")), 
-//             m("div",{ class: "content" }, m("h2", "A description"))
-//               ];
-//   }
-// };
+var RecipeView = {
+  title: "A Recipe",
+  view: function(){
+    return [
+      m("div", { class: "header" },  m("h1", "A title")), 
+            m("div",{ class: "content" }, m("h2", "A description"))
+              ];
+  }
+};
 
-// function singleRecipeView (recipe){
-//   m("div", { class: "header" },  m("h1", recipe.title)), m("div",
-//         { class: "content" }, m("h1", recipe.description))
+function singleRecipeView (recipe){
+  m("div", { class: "header" },  m("h1", recipe.title)), m("div",
+        { class: "content" }, m("h1", recipe.description))
   
-// }
+}
 
 function _make_recipe_rows(recipe_list) {
   return m("div", { class: "pure-g" }, recipe_list.map(_make_recipe_row));
