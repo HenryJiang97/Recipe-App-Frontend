@@ -89,17 +89,29 @@ var RecipesViewController = {
 
 // Main view of recipes
 var RecipesView = {
+  username: "",
+  password: "",
+  
   title: "Recipes",
   oninit: function() {
     return RecipesViewController.loadList();
   },
+  
+  setUserName(name) {
+    this.username = name
+  }
+  
   view: function() {
     return [
       m("div", { class: "header" }, [
         m("h1", "Recipe App"),
 
         // User login inputbox
-        m("div", [m("h2", "User Login"), m("input"), m("input")]),
+        m("div", [
+          m("h2", "User Login"),
+          m("input", ),
+          m("input")
+        ]),
 
         // Login and register buttons
         m("div", [
