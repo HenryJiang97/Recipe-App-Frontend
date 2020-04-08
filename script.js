@@ -99,12 +99,12 @@ var RecipesView = {
   
   setUserName: function(name) {
     this.username = name
-    console.log("UserName:", this.username);
+    console.log("UserName: ", this.username);
   },
   
   setPassword: function(psw) {
     this.password = psw
-    console.log()
+    console.log("Password: ", this.password);
   },
   
   view: function() {
