@@ -4,6 +4,7 @@
 var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
 
 
+
 // Simple helper so we don't have to repeat the API_SERVER everywhere
 // _ prefix to indicate it's a helper function
 function _api(options) {
@@ -108,8 +109,21 @@ var RecipesView = {
     console.log("Password: ", this.password);
   },
   
+  
   view: function() {
     let that = this;
+    
+    userbase.init({
+  appId: 'YOUR_APP_ID'
+}).then((session) => {
+  // SDK initialized successfully
+
+  if (session.user) {
+    // there is a valid active session
+    console.log(session.user.username)
+  }
+}).catch((e) => console.error(e));
+    
     return [
       m("div", { class: "header" }, [
         m("h1", "Recipe App"),
