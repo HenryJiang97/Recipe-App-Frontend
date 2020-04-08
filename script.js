@@ -3,6 +3,7 @@
 
 var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
 
+
 // Simple helper so we don't have to repeat the API_SERVER everywhere
 // _ prefix to indicate it's a helper function
 function _api(options) {
