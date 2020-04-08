@@ -99,13 +99,16 @@ var RecipesView = {
   
   setUserName: function(name) {
     this.username = name
+    console.log("UserName:", this.username);
   },
   
   setPassword: function(psw) {
     this.password = psw
+    console.log()
   },
   
   view: function() {
+    let that = this;
     return [
       m("div", { class: "header" }, [
         m("h1", "Recipe App"),
@@ -113,8 +116,8 @@ var RecipesView = {
         // User login inputbox
         m("div", [
           m("h2", "User Login"),
-          m("input[type=text]", {oninput: function(e) {this.setUserName(e.target.value)}}),
-          m("input[type=password]", {oninput: function(e) {this.setPassword(e.target.value)}})
+          m("input[type=text]", {oninput: function(e) {that.setUserName(e.target.value)}}),
+          m("input[type=password]", {oninput: function(e) {that.setPassword(e.target.value)}})
         ]),
 
         // Login and register buttons
