@@ -113,8 +113,8 @@ var RecipesView = {
         // User login inputbox
         m("div", [
           m("h2", "User Login"),
-          m("input[type=text]", {oninput: function(e) {this.setUserName(e.target.value), console.log(this.username)}}),
-          m("input[type=password]", {oninput: function(e) {this.setPassword(e.target.value), console.log(this.password)}})
+          m("input[type=text]", {oninput: function(e) {this.setUserName(e.target.value)}}),
+          m("input[type=password]", {oninput: function(e) {this.setPassword(e.target.value)}})
         ]),
 
         // Login and register buttons
