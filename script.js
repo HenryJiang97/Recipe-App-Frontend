@@ -1,12 +1,12 @@
 "use strict";
 /* global m */
 
-import userbase from "userbase-js";
-
+const fetch = require("node-fetch");
+global.fetch = fetch;
 
 var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
 
-
+const userbase = require('userbase.js')
 userbase.init({
   appId: 'YOUR_APP_ID'
 }).then((session) => {
