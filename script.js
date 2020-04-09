@@ -1,10 +1,10 @@
 "use strict";
 /* global m */
 
-var userbase = require("userbase-js");
+
 
 // userbase.init({
-//   appId: '44840daa-e0bc-44aa-8cf2-c89b0acdbffd'
+//   appId: 'YOUR_APP_ID'
 // }).then((session) => {
 //   // SDK initialized successfully
 
@@ -12,10 +12,8 @@ var userbase = require("userbase-js");
 //     // there is a valid active session
 //     console.log(session.user.username)
 //   }
-// }).catch((e) => console.error(e))
-
-
-var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
+// }).catch((e) => console.error(e))catch((e) => console.error(e))
+ecipe-app-tba.herokuapp.com/";
 
 
 
@@ -82,8 +80,8 @@ var Api = {
     });
   }
 };
-var t = Api.getRecipes()
-console.log("t:", t)
+// var t = Api.getRecipes()
+// console.log("t:", t)
 
 
 // Begin ViewControllers
@@ -333,3 +331,4 @@ var MenuView = {
 };
 
 m.mount(document.getElementById("menuList"), MenuView);
+var API_SERVER =
