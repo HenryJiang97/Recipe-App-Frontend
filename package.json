@@ -1,0 +1,16 @@
+{
+  "name": "recipe-app-tba",
+  "version": "1.0",
+  "description": "A thing",
+  "main:": "script.js",
+  "scripts":{
+    "start": "node script.js"
+    
+  },
+  "dependencies":{
+  },
+  "keywords": {
+  "node",
+  "express"
+  }
+}
