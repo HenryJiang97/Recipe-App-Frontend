@@ -1,7 +1,11 @@
 "use strict";
 /* global m */
 
-var userbase = require("userbase-js");
+import userbase from "userbase-js";
+
+
+var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
+
 
 userbase.init({
   appId: 'YOUR_APP_ID'
@@ -14,9 +18,6 @@ userbase.init({
   }
 }).catch((e) => console.error(e))
 
-
-
-var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
 
 
 
