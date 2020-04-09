@@ -1,22 +1,22 @@
 "use strict";
 /* global m */
 
-const fetch = require("node-fetch");
-global.fetch = fetch;
+// const fetch = require("node-fetch");
+// global.fetch = fetch;
 
 var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
 
-const userbase = require('userbase.js')
-userbase.init({
-  appId: 'YOUR_APP_ID'
-}).then((session) => {
-  // SDK initialized successfully
+// const userbase = require('userbase-js')
+// userbase.init({
+//   appId: 'YOUR_APP_ID'
+// }).then((session) => {
+//   // SDK initialized successfully
 
-  if (session.user) {
-    // there is a valid active session
-    console.log(session.user.username)
-  }
-}).catch((e) => console.error(e))
+//   if (session.user) {
+//     // there is a valid active session
+//     console.log(session.user.username)
+//   }
+// }).catch((e) => console.error(e))
 
 
 
