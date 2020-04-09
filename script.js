@@ -1,19 +1,6 @@
 "use strict";
 /* global m */
 
-var userbase = require("userbase-js");
-
-userbase.init({
-  appId: 'YOUR_APP_ID'
-}).then((session) => {
-  // SDK initialized successfully
-
-  if (session.user) {
-    // there is a valid active session
-    console.log(session.user.username)
-  }
-}).catch((e) => console.error(e))
-
 
 
 var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
@@ -127,17 +114,6 @@ var RecipesView = {
   
   view: function() {
     let that = this;
-    
-    userbase.init({
-  appId: 'YOUR_APP_ID'
-}).then((session) => {
-  // SDK initialized successfully
-
-  if (session.user) {
-    // there is a valid active session
-    console.log(session.user.username)
-  }
-}).catch((e) => console.error(e));
     
     return [
       m("div", { class: "header" }, [
