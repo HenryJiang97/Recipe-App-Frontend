@@ -1,6 +1,7 @@
 "use strict";
 /* global m */
-import userbase from 'userbase-js'
+
+var userbase = require("userbase-js");
 
 userbase.init({
   appId: 'YOUR_APP_ID'
