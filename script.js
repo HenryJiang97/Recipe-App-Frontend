@@ -13,11 +13,7 @@
 //     console.log(session.user.username)
 //   }
 // }).catch((e) => console.error(e))catch((e) => console.error(e))
-ecipe-app-tba.herokuapp.com/";
-
-
-
-// Simple helper so we don't have to repeat the API_SERVER everywhere
+var API_SERVER = "https://recipe-app-tba.herokuapp.com/helper so we don't have to repeat the API_SERVER everywhere
 // _ prefix to indicate it's a helper function
 function _api(options) {
   let modifiedOptions = { ...options };
