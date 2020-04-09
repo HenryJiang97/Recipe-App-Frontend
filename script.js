@@ -1,6 +1,18 @@
 "use strict";
 /* global m */
 
+var userbase = require("userbase-js");
+
+// userbase.init({
+//   appId: '44840daa-e0bc-44aa-8cf2-c89b0acdbffd'
+// }).then((session) => {
+//   // SDK initialized successfully
+
+//   if (session.user) {
+//     // there is a valid active session
+//     console.log(session.user.username)
+//   }
+// }).catch((e) => console.error(e))
 
 
 var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
