@@ -247,8 +247,7 @@ var RecipeTest = {
 }
 
 var views = {
-  "/recipes": RecipesView,
-  "/1": RecipeTest
+  "/recipes": RecipesView
 };
 
 function make_all_recipes(recipe_list){
