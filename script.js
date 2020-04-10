@@ -1,11 +1,10 @@
 "use strict";
 /* global m, userbase */
 
-// const fetch = require("node-fetch");
-// global.fetch = fetch;
-
 var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
 
+
+// Initialize userbase
 userbase
   .init({
     appId: "44840daa-e0bc-44aa-8cf2-c89b0acdbffd"
@@ -19,6 +18,9 @@ userbase
     }
   })
   .catch(e => console.error(e));
+
+
+
 
 // Simple helper so we don't have to repeat the API_SERVER everywhere
 // _ prefix to indicate it's a helper function
@@ -80,6 +82,7 @@ var Api = {
 };
 var t = Api.getRecipes();
 console.log("t:", t);
+
 
 // Begin ViewControllers
 
