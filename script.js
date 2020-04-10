@@ -159,7 +159,8 @@ var RecipesView = {
         m("h1", "Recipe App"),
 
         // User login inputbox
-        m("div", [
+        m("div", 
+        [
           m("h2", "User Login"),
           m("input[type=text]", {
             oninput: function(e) {
