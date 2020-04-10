@@ -1,25 +1,24 @@
 "use strict";
-/* global m */
+/* global m, userbase */
 
 // const fetch = require("node-fetch");
 // global.fetch = fetch;
 
 var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
 
-// const userbase = require('userbase-js')
-// userbase.init({
-//   appId: 'YOUR_APP_ID'
-// }).then((session) => {
-//   // SDK initialized successfully
-
-//   if (session.user) {
-//     // there is a valid active session
-//     console.log(session.user.username)
-//   }
-// }).catch((e) => console.error(e))
-
-
-
+userbase
+  .init({
+    appId: "YOUR_APP_ID"
+  })
+  .then(session => {
+    // SDK initialized successfully
+    console.log("UserBase SDK loaded");
+    if (session.user) {
+      // there is a valid active session
+      console.log(session.user.username);
+    }
+  })
+  .catch(e => console.error(e));
 
 // Simple helper so we don't have to repeat the API_SERVER everywhere
 // _ prefix to indicate it's a helper function
@@ -36,7 +35,6 @@ function _api(options) {
 // const bodyParser = require("body-parser");
 
 // var app = express()
-
 
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use('/', require('express-pouchdb')(LocalPouchDB))
@@ -60,14 +58,10 @@ function _api(options) {
 //   db.allDocs()
 // }
 
-
 // // listen for requests :)
 // var listener = app.listen(process.env.PORT, function () {
 //   console.log('Your pouchdb is listening on port ' + listener.address().port);
 // });
-
-
-
 
 var Api = {
   // This is effectively the "model" of your frontend
@@ -84,9 +78,8 @@ var Api = {
     });
   }
 };
-var t = Api.getRecipes()
-console.log("t:", t)
-
+var t = Api.getRecipes();
+console.log("t:", t);
 
 // Begin ViewControllers
 
@@ -109,26 +102,25 @@ var RecipesViewController = {
 var RecipesView = {
   username: "",
   password: "",
-  
+
   title: "Recipes",
   oninit: function() {
     return RecipesViewController.loadList();
   },
-  
+
   setUserName: function(name) {
-    this.username = name
+    this.username = name;
     console.log("UserName: ", this.username);
   },
-  
+
   setPassword: function(psw) {
-    this.password = psw
+    this.password = psw;
     console.log("Password: ", this.password);
   },
-  
-  
+
   view: function() {
     let that = this;
-    
+
     return [
       m("div", { class: "header" }, [
         m("h1", "Recipe App"),
@@ -136,29 +128,41 @@ var RecipesView = {
         // User login inputbox
         m("div", [
           m("h2", "User Login"),
-          m("input[type=text]", {oninput: function(e) {that.setUserName(e.target.value)}}),
-          m("input[type=password]", {oninput: function(e) {that.setPassword(e.target.value)}})
+          m("input[type=text]", {
+            oninput: function(e) {
+              that.setUserName(e.target.value);
+            }
+          }),
+          m("input[type=password]", {
+            oninput: function(e) {
+              that.setPassword(e.target.value);
+            }
+          })
         ]),
 
         // Login and register buttons
         m("div", [
-          m("button", {
-            class: "my-button",
-            onclick: function() {
-              console.log("Login button clicked")
-            }
-          },
+          m(
+            "button",
+            {
+              class: "my-button",
+              onclick: function() {
+                console.log("Login button clicked");
+              }
+            },
             "Login"
           ),
-          
-          m("button", {
-            class: "my-button",
-            onclick: function() {
-              console.log("Register button clicked")
-            }
-          },
+
+          m(
+            "button",
+            {
+              class: "my-button",
+              onclick: function() {
+                console.log("Register button clicked");
+              }
+            },
             "Register"
-          ),
+          )
         ]),
 
         m("h2", "Recipes List")
@@ -174,42 +178,38 @@ var RecipesView = {
 
 var RecipeView = {
   title: "A Recipe",
-  view: function(){
+  view: function() {
     return [
-      m("div", { class: "header" },  m("h1", "A title")), 
-            m("div",{ class: "content" }, m("h2", "A description"))
-              ];
+      m("div", { class: "header" }, m("h1", "A title")),
+      m("div", { class: "content" }, m("h2", "A description"))
+    ];
   }
 };
 
-function singleRecipeView (recipe){
-  m("div", { class: "header" },  m("h1", recipe.title)), m("div",
-        { class: "content" }, m("h1", recipe.description))
-  
+function singleRecipeView(recipe) {
+  m("div", { class: "header" }, m("h1", recipe.title)),
+    m("div", { class: "content" }, m("h1", recipe.description));
 }
 
 function _make_recipe_rows(recipe_list) {
   return m("div", { class: "pure-g" }, recipe_list.map(_make_recipe_row));
 }
 
-function makeRecipe(recipe){
+function makeRecipe(recipe) {
   return [
-      m("div", { class: "header" },  m("h1", recipe.title)), 
-            m("div",{ class: "content" }, m("h2", recipe.description))
-              ];
-
+    m("div", { class: "header" }, m("h1", recipe.title)),
+    m("div", { class: "content" }, m("h2", recipe.description))
+  ];
 }
 
 // This function is a problem and I dont know why. It correctly displays the title of the recipe but does not display the body
-function make_recipe_object(recipe){
+function make_recipe_object(recipe) {
   var a_recipe = {
-  title: recipe.title,
-  view: function(){
-    return [
-      m("div", 
-        { class: "header" },
-        m("h1", recipe.title)), 
-        m("div",{ class: "content" }, m("h2", recipe.description))
+    title: recipe.title,
+    view: function() {
+      return [
+        m("div", { class: "header" }, m("h1", recipe.title)),
+        m("div", { class: "content" }, m("h2", recipe.description))
       ];
     }
   };
@@ -232,7 +232,6 @@ function _make_recipe_row(recipe) {
 
 // End ViewControllers
 
-
 var content = document.getElementById("main");
 
 // Test of make recipe function
@@ -241,34 +240,33 @@ var RecipeTest = {
   oninit: function() {
     return RecipesViewController.loadList();
   },
-  view: function(){
+  view: function() {
     return makeRecipe(RecipesViewController.list[1]);
   }
-}
+};
 
 var views = {
   "/recipes": RecipesView
 };
 
-function make_all_recipes(recipe_list){
-  console.log(recipe_list)
-  var i = 2
-    for(const recipe of recipe_list){
-      var title = '/'
-      views[title.concat(String(i))] = make_recipe_object(recipe)
-      console.log(title.concat(String(i)))
-      i++
+function make_all_recipes(recipe_list) {
+  console.log(recipe_list);
+  var i = 2;
+  for (const recipe of recipe_list) {
+    var title = "/";
+    views[title.concat(String(i))] = make_recipe_object(recipe);
+    console.log(title.concat(String(i)));
+    i++;
   }
-}  
+}
 
 // Needs to wait for recipe controller promise
-async function recipe_controller_promise(){
-  var x = await RecipesViewController.loadList()
-  make_all_recipes(RecipesViewController.list)
+async function recipe_controller_promise() {
+  var x = await RecipesViewController.loadList();
+  make_all_recipes(RecipesViewController.list);
   m.route(content, "/2", views);
 }
 recipe_controller_promise();
-
 
 m.route(content, "/recipes", views);
 
