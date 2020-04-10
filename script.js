@@ -105,6 +105,7 @@ var RecipesViewController = {
 var RecipesView = {
   username: "",
   password: "",
+  signedin: false,
 
   title: "Recipes",
   oninit: function() {
@@ -127,7 +128,8 @@ var RecipesView = {
       password: password
     }).then((user) => {
       // user account created
-    }).catch((e) => console.error(e))
+      alert("Registered");
+    }).catch((e) => alert(e))
   },
   
   signin: function(username, password) {
@@ -136,13 +138,17 @@ var RecipesView = {
       password: password
     }).then((user) => {
       // user logged in
-    }).catch((e) => console.error(e))
+      alert("Signed in");
+      this.signedin = true;
+    }).catch((e) => alert(e))
   },
   
   signout: function() {
     userbase.signOut().then(() => {
       // user logged out
-    }).catch((e) => console.error(e))
+      alert("Signed out");
+      this.signedin = true;
+    }).catch((e) => alert(e))
   },
 
   view: function() {
