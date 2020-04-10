@@ -155,10 +155,10 @@ var RecipesView = {
     let that = this;
 
     return [
+      m("div", { class: "header" }, m("h1", "Recipe App")),
       
       m("div", that.signedin = false ? 
         m("div", { class: "header" }, [
-          m("h1", "Recipe App"),
 
           // User login inputbox
           m("div", 
@@ -214,19 +214,20 @@ var RecipesView = {
               "Sign out"
             )
           ]),
-
-          m("h2", "Recipes List")
-        
-        ]),
-        
+        ])
+        : 
+        m("h2", "Logged in")
       ),
       
-      
-      m(
-        "div",
-        { class: "content" },
-        _make_recipe_rows(RecipesViewController.list)
+      m("div",
+        m("h2", { class : "header"}, "Recipes List"),
+        m(
+          "div",
+          { class: "content" },
+          _make_recipe_rows(RecipesViewController.list)
+        )
       )
+      
     ];
   }
 };
