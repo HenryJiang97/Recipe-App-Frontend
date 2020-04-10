@@ -156,67 +156,72 @@ var RecipesView = {
 
     return [
       
-      that.signedin = false ? 
-      m("div", { class: "header" }, [
-        m("h1", "Recipe App"),
+      m("div", that.signedin = false ? 
+        m("div", { class: "header" }, [
+          m("h1", "Recipe App"),
 
-        // User login inputbox
-        m("div", 
-        [
-          m("h2", "User Login"),
-          m("input[type=text]", {
-            oninput: function(e) {
-              that.setUserName(e.target.value);
-            }
-          }),
-          m("input[type=password]", {
-            oninput: function(e) {
-              that.setPassword(e.target.value);
-            }
-          })
+          // User login inputbox
+          m("div", 
+          [
+            m("h2", "User Login"),
+            m("input[type=text]", {
+              oninput: function(e) {
+                that.setUserName(e.target.value);
+              }
+            }),
+            m("input[type=password]", {
+              oninput: function(e) {
+                that.setPassword(e.target.value);
+              }
+            })
+          ]),
+
+          // Login and register buttons
+          m("div", [
+            m(
+              "button",
+              {
+                class: "my-button",
+                onclick: function() {
+                  console.log("Login button clicked");
+                  that.signin(that.username, that.password);
+                }
+              },
+              "Login"
+            ),
+
+            m(
+              "button",
+              {
+                class: "my-button",
+                onclick: function() {
+                  console.log("Register button clicked");
+                  that.register(that.username, that.password)
+                }
+              },
+              "Register"
+            ),
+
+            m(
+              "button",
+              {
+                class: "my-button",
+                onclick: function() {
+                  console.log("Sign out button clicked");
+                  that.signout()
+                }
+              },
+              "Sign out"
+            )
+          ]),
+
+          m("h2", "Recipes List")
+        
         ]),
-
-        // Login and register buttons
-        m("div", [
-          m(
-            "button",
-            {
-              class: "my-button",
-              onclick: function() {
-                console.log("Login button clicked");
-                that.signin(that.username, that.password);
-              }
-            },
-            "Login"
-          ),
-
-          m(
-            "button",
-            {
-              class: "my-button",
-              onclick: function() {
-                console.log("Register button clicked");
-                that.register(that.username, that.password)
-              }
-            },
-            "Register"
-          ),
-          
-          m(
-            "button",
-            {
-              class: "my-button",
-              onclick: function() {
-                console.log("Sign out button clicked");
-                that.signout()
-              }
-            },
-            "Sign out"
-          )
-        ]),
-
-        m("h2", "Recipes List")
-      ]),
+        
+      ),
+      
+      
       m(
         "div",
         { class: "content" },
