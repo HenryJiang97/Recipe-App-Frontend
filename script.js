@@ -129,6 +129,12 @@ var RecipesView = {
       // user account created
     }).catch((e) => console.error(e))
   },
+  
+  signout: function() {
+    userbase.signOut().then(() => {
+      // user logged out
+    }).catch((e) => console.error(e))
+  },
 
   view: function() {
     let that = this;
@@ -171,9 +177,22 @@ var RecipesView = {
               class: "my-button",
               onclick: function() {
                 console.log("Register button clicked");
+                that.register(that.username, that.password)
               }
             },
             "Register"
+          ),
+          
+          m(
+            "button",
+            {
+              class: "my-button",
+              onclick: function() {
+                console.log("Sign out button clicked");
+                that.signout()
+              }
+            },
+            "Sign out"
           )
         ]),
 
