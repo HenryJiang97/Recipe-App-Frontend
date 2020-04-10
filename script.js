@@ -8,7 +8,7 @@ var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
 
 userbase
   .init({
-    appId: "YOUR_APP_ID"
+    appId: "44840daa-e0bc-44aa-8cf2-c89b0acdbffd"
   })
   .then(session => {
     // SDK initialized successfully
