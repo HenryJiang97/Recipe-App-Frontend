@@ -130,6 +130,15 @@ var RecipesView = {
     }).catch((e) => console.error(e))
   },
   
+  signin: function(username, password) {
+    userbase.signIn({
+      username: username,
+      password: password
+    }).then((user) => {
+      // user logged in
+    }).catch((e) => console.error(e))
+  },
+  
   signout: function() {
     userbase.signOut().then(() => {
       // user logged out
@@ -166,6 +175,7 @@ var RecipesView = {
               class: "my-button",
               onclick: function() {
                 console.log("Login button clicked");
+                that.signin(that.username, that.password);
               }
             },
             "Login"
