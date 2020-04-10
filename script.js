@@ -155,6 +155,8 @@ var RecipesView = {
     let that = this;
 
     return [
+      
+      that.signedin = false ? 
       m("div", { class: "header" }, [
         m("h1", "Recipe App"),
 
