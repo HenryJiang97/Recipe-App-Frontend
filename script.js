@@ -117,6 +117,15 @@ var RecipesView = {
     this.password = psw;
     console.log("Password: ", this.password);
   },
+  
+  register: function(username, password) {
+    userbase.signUp({
+      username: 'example-username',
+      password: 'example-password'
+    }).then((user) => {
+      // user account created
+    }).catch((e) => console.error(e))
+  },
 
   view: function() {
     let that = this;
