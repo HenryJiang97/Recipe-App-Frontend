@@ -123,8 +123,8 @@ var RecipesView = {
   
   register: function(username, password) {
     userbase.signUp({
-      username: 'example-username',
-      password: 'example-password'
+      username: username,
+      password: password
     }).then((user) => {
       // user account created
     }).catch((e) => console.error(e))
