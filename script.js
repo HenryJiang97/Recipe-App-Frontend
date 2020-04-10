@@ -129,17 +129,6 @@ var RecipesView = {
   view: function() {
     let that = this;
     
-    userbase.init({
-  appId: 'YOUR_APP_ID'
-}).then((session) => {
-  // SDK initialized successfully
-
-  if (session.user) {
-    // there is a valid active session
-    console.log(session.user.username)
-  }
-}).catch((e) => console.error(e));
-    
     return [
       m("div", { class: "header" }, [
         m("h1", "Recipe App"),
@@ -213,7 +202,7 @@ function makeRecipe(recipe){
 
 // This function is a problem and I dont know why. It correctly displays the title of the recipe but does not display the body
 function make_recipe_object(recipe){
-  var obj = {
+  var a_recipe = {
   title: recipe.title,
   view: function(){
     return [
@@ -224,7 +213,7 @@ function make_recipe_object(recipe){
       ];
     }
   };
-  return obj;
+  return a_recipe;
 }
 
 // Recipes list displayed on main page
@@ -259,12 +248,12 @@ var RecipeTest = {
 
 var views = {
   "/recipes": RecipesView,
-  "/2": RecipeTest
+  "/1": RecipeTest
 };
 
 function make_all_recipes(recipe_list){
   console.log(recipe_list)
-  var i = 0
+  var i = 2
     for(const recipe of recipe_list){
       var title = '/'
       views[title.concat(String(i))] = make_recipe_object(recipe)
@@ -277,6 +266,7 @@ function make_all_recipes(recipe_list){
 async function recipe_controller_promise(){
   var x = await RecipesViewController.loadList()
   make_all_recipes(RecipesViewController.list)
+  m.route(content, "/2", views);
 }
 recipe_controller_promise();
 
