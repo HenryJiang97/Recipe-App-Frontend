@@ -218,7 +218,7 @@ var RecipesView = {
               class: "my-button",
               onclick: function() {
                 console.log("Sign out button clicked");
-                that.signout()
+                that.signout();
               }
             },
             "Sign out"
