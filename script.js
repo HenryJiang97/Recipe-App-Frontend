@@ -211,15 +211,15 @@ var RecipesView = {
         ])
         : 
         m("div", { class : "header"},
-          m("h2", `Welcome ${that.userloggedin}, you've logged in`),
+          m("h2", `Welcome, you've logged in`),
           m(
             "button",
             {
               class: "my-button",
               onclick: function() {
                 console.log("Sign out button clicked");
-                that.signout();
                 console.log(that.userloggedin);
+                that.signout();
               }
             },
             "Sign out"
