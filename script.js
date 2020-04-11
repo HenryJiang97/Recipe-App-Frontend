@@ -106,6 +106,7 @@ var RecipesView = {
   username: "",
   password: "",
   signedin: false,
+  userloggedin: "",
 
   title: "Recipes",
   oninit: function() {
@@ -140,6 +141,7 @@ var RecipesView = {
       // user logged in
       alert("Signed in");
       this.signedin = true;
+      this.userloggedin = username;
       console.log(this.signedin);
     }).catch((e) => alert(e))
   },
@@ -149,6 +151,7 @@ var RecipesView = {
       // user logged out
       alert("Signed out");
       this.signedin = false;
+      this.userloggedin = "";
       console.log(this.signedin);
     }).catch((e) => alert(e))
   },
@@ -160,7 +163,7 @@ var RecipesView = {
     return [
       m("div", { class: "header" }, m("h1", "Recipe App")),
       
-      m("div", that.signedin == false ? 
+      m("div", that.signedin == true ? 
         m("div", { class: "header" }, [
 
           // User login inputbox
@@ -208,7 +211,7 @@ var RecipesView = {
         ])
         : 
         m("div", { class : "header"},
-          m("h2", "Logged in"),
+          m("h2", `Welcome ${that.userloggedin}, you've logged in`),
           m(
             "button",
             {
