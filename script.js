@@ -147,9 +147,10 @@ var RecipesView = {
     userbase.signOut().then(() => {
       // user logged out
       alert("Signed out");
-      this.signedin = true;
+      this.signedin = false;
     }).catch((e) => alert(e))
   },
+  
 
   view: function() {
     let that = this;
@@ -200,23 +201,24 @@ var RecipesView = {
                 }
               },
               "Register"
-            ),
-
-            m(
-              "button",
-              {
-                class: "my-button",
-                onclick: function() {
-                  console.log("Sign out button clicked");
-                  that.signout()
-                }
-              },
-              "Sign out"
             )
           ]),
         ])
         : 
-        m("h2", "Logged in")
+        m("div", { class : "header"},
+          m("h2", "Logged in"),
+          m(
+            "button",
+            {
+              class: "my-button",
+              onclick: function() {
+                console.log("Sign out button clicked");
+                that.signout()
+              }
+            },
+            "Sign out"
+          )
+        )
       ),
       
       m("div",
