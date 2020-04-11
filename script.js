@@ -163,7 +163,7 @@ var RecipesView = {
     return [
       m("div", { class: "header" }, m("h1", "Recipe App")),
       
-      m("div", that.signedin == true ? 
+      m("div", that.signedin == false ? 
         m("div", { class: "header" }, [
 
           // User login inputbox
@@ -219,6 +219,7 @@ var RecipesView = {
               onclick: function() {
                 console.log("Sign out button clicked");
                 that.signout();
+                console.log(that.userloggedin);
               }
             },
             "Sign out"
