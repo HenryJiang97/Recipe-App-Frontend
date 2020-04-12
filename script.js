@@ -3,7 +3,6 @@
 
 var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
 
-
 // Initialize userbase
 userbase
   .init({
@@ -19,9 +18,6 @@ userbase
   })
   .catch(e => console.error(e));
 
-
-
-
 // Simple helper so we don't have to repeat the API_SERVER everywhere
 // _ prefix to indicate it's a helper function
 function _api(options) {
@@ -29,41 +25,6 @@ function _api(options) {
   modifiedOptions["url"] = API_SERVER + modifiedOptions["url"];
   return m.request(modifiedOptions);
 }
-
-// https://glitch.com/edit/#!/pouchdb-server?path=server.js:19:0
-
-// const PouchDB = require("pouchdb");
-// const express = require("express");
-// const bodyParser = require("body-parser");
-
-// var app = express()
-
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use('/', require('express-pouchdb')(LocalPouchDB))
-// var LocalPouchDB = PouchDB.defaults({ prefix: ".data" });
-// var db = new LocalPouchDB("recipe-tba");
-
-// function addRecipe(id, title, description){
-//   var recipe = {
-//     _id : id,
-//     title: title,
-//     description: description
-//   };
-//   db.put(recipe, function callback(err,result){
-//     if(!err){
-//       console.log('Work!');
-//     }
-//   });
-// }
-
-// function showRecipes(){
-//   db.allDocs()
-// }
-
-// // listen for requests :)
-// var listener = app.listen(process.env.PORT, function () {
-//   console.log('Your pouchdb is listening on port ' + listener.address().port);
-// });
 
 var Api = {
   // This is effectively the "model" of your frontend
@@ -82,7 +43,6 @@ var Api = {
 };
 var t = Api.getRecipes();
 console.log("t:", t);
-
 
 // Begin ViewControllers
 
@@ -122,54 +82,61 @@ var RecipesView = {
     this.password = psw;
     // console.log("Password: ", this.password);
   },
-  
+
   register: function(username, password) {
-    userbase.signUp({
-      username: username,
-      password: password
-    }).then((user) => {
-      // user account created
-      alert("Registered");
-    }).catch((e) => alert(e))
+    userbase
+      .signUp({
+        username: username,
+        password: password
+      })
+      .then(user => {
+        // user account created
+        alert("Registered");
+      })
+      .catch(e => alert(e));
   },
-  
+
   signin: function(username, password) {
-    userbase.signIn({
-      username: username,
-      password: password
-    }).then((user) => {
-      // user logged in
-      alert("Signed in");
-      this.signedin = true;
-      this.userloggedin = username;
-      this.username = "";
-      console.log(this.signedin);
-    }).catch((e) => alert(e))
+    userbase
+      .signIn({
+        username: username,
+        password: password
+      })
+      .then(user => {
+        // user logged in
+        alert("Signed in");
+        this.signedin = true;
+        this.userloggedin = username;
+        this.username = "";
+        console.log(this.signedin);
+      })
+      .catch(e => alert(e));
   },
-  
+
   signout: function() {
-    userbase.signOut().then(() => {
-      // user logged out
-      alert("Signed out");
-      this.signedin = false;
-      this.userloggedin = "";
-      console.log(this.signedin);
-    }).catch((e) => alert(e))
+    userbase
+      .signOut()
+      .then(() => {
+        // user logged out
+        alert("Signed out");
+        this.signedin = false;
+        this.userloggedin = "";
+        console.log(this.signedin);
+      })
+      .catch(e => alert(e));
   },
-  
 
   view: function() {
     let that = this;
 
     return [
       m("div", { class: "header" }, m("h1", "Recipe App")),
-      
-      m("div",
-        m("div", { class: "header" }, [
 
+      m(
+        "div",
+        m("div", { class: "header" }, [
           // User login inputbox
-          m("div", 
-          [
+          m("div", [
             m("h2", "User Login"),
             m("input[type=text]", {
               oninput: function(e) {
@@ -185,61 +152,46 @@ var RecipesView = {
 
           // Login and register buttons
           m("div", [
-            m(
-              "button",
-              {
-                class: "my-button",
-                onclick: function() {
-                  console.log("Login button clicked");
-                  that.signin(that.username, that.password);
-                }
-              },
-              "Login"
-            ),
-
-            m(
-              "button",
-              {
-                class: "my-button",
-                onclick: function() {
-                  console.log("Register button clicked");
-                  that.register(that.username, that.password)
-                }
-              },
-              "Register"
-            )
-          ]),
+            _make_button("Login", function() {
+              that.signin(that.username, that.password);
+            }),
+            _make_button("Register", function() {
+              that.register(that.username, that.password);
+            })
+          ])
         ]),
-        
-        m("div", { class : "header"},
+
+        m("div", { class: "header" }, [
           m("h2", `Welcome`),
-          m(
-            "button",
-            {
-              class: "my-button",
-              onclick: function() {
-                console.log("Sign out button clicked");
-                console.log(that.userloggedin);
-                that.signout();
-              }
-            },
-            "Sign out"
-          )
-        )
+          _make_button("Sign out", function() {
+            that.signout();
+          })
+        ])
       ),
-      
-      m("div",
-        m("h2", { class : "header"}, "Recipes List"),
+
+      m(
+        "div",
+        m("h2", { class: "header" }, "Recipes List"),
         m(
           "div",
           { class: "content" },
           _make_recipe_rows(RecipesViewController.list)
         )
       )
-      
     ];
   }
 };
+
+function _make_button(text, onclick) {
+  return m(
+    "button",
+    {
+      class: "my-button",
+      onclick: onclick
+    },
+    text
+  );
+}
 
 var RecipeView = {
   title: "A Recipe",
@@ -275,8 +227,16 @@ function make_recipe_object(recipe) {
       return [
         m("div", { class: "header" }, m("h1", recipe.title)),
         m("div", { class: "content" }, m("h2", recipe.description)),
-        m("div", { class: "content" }, m("h2", "Total Time: " + recipe.totalTime)),
-        m("div", { class: "content" }, m("h2", "Directions " + recipe.directions))
+        m(
+          "div",
+          { class: "content" },
+          m("h2", "Total Time: " + recipe.totalTime)
+        ),
+        m(
+          "div",
+          { class: "content" },
+          m("h2", "Directions " + recipe.directions)
+        )
       ];
     }
   };
