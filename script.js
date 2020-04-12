@@ -142,6 +142,7 @@ var RecipesView = {
       alert("Signed in");
       this.signedin = true;
       this.userloggedin = username;
+      this.username = "";
       console.log(this.signedin);
     }).catch((e) => alert(e))
   },
