@@ -70,7 +70,10 @@ var SingleRecipeView = {
   view: function(vnode) {
     let recipe_id = vnode.attrs.recipe_id;
     let recipe = RecipesViewController.recipes[recipe_id];
-    if (recipe === undefined) return;
+    if (recipe === undefined) {
+      RecipesViewController.loadRecipe(recipe_id);
+      return;
+    }
     return [
       m("div", { class: "header" }, m("h1", recipe.title)),
       m("div", { class: "content" }, m("h2", recipe.description)),
@@ -353,31 +356,58 @@ content.onclick = function(e) {
   }
 };
 
+function _make_recipe_links(recipeList) {
+  if (recipeList === undefined) {
+    return [];
+  }
+
+  return recipeList.map(entry => {
+    let clazz = "pure-menu-item";
+    let route = "#!/recipes/" + entry.id;
+    if (route == m.route.get()) {
+      console.log("Selected ", route);
+      clazz += " pure-menu-selected";
+    }
+
+    return m(
+      "li",
+      { class: clazz },
+      m(
+        "a",
+        { href: route, class: "pure-menu-link", onclick: toggleAll },
+        entry.title
+      )
+    );
+  });
+}
+
 var MenuView = {
   oninit: function() {
     return RecipesViewController.loadList();
   },
   view: function() {
-    return Object.entries(views).map(entry => {
-      let route = entry[0];
-      let view = entry[1];
-      let title = view.title;
-      if (title === undefined) return;
-      let clazz = "pure-menu-item";
-      if (route == m.route.get()) {
-        console.log("Selected ", route);
-        clazz += " pure-menu-selected";
-      }
-      return m(
-        "li",
-        { class: clazz },
-        m(
-          m.route.Link,
-          { href: route, class: "pure-menu-link", onclick: toggleAll },
-          title
-        )
-      );
-    }) + _make_recipe_links(RecipesViewController.);
+    return Object.entries(views)
+      .map(entry => {
+        let route = entry[0];
+        let view = entry[1];
+        let title = view.title;
+        if (title === undefined) return;
+        let clazz = "pure-menu-item";
+        if (route == m.route.get()) {
+          console.log("Selected ", route);
+          clazz += " pure-menu-selected";
+        }
+        return m(
+          "li",
+          { class: clazz },
+          m(
+            m.route.Link,
+            { href: route, class: "pure-menu-link", onclick: toggleAll },
+            title
+          )
+        );
+      })
+      .concat(_make_recipe_links(RecipesViewController.list));
   }
 };
 
