@@ -274,7 +274,9 @@ function make_recipe_object(recipe) {
     view: function() {
       return [
         m("div", { class: "header" }, m("h1", recipe.title)),
-        m("div", { class: "content" }, m("h2", recipe.description))
+        m("div", { class: "content" }, m("h2", recipe.description)),
+        m("div", { class: "content" }, m("h2", "Total Time: " + recipe.totalTime)),
+        m("div", { class: "content" }, m("h2", "Directions " + recipe.directions))
       ];
     }
   };
