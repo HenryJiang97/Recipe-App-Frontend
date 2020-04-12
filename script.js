@@ -163,7 +163,7 @@ var RecipesView = {
     return [
       m("div", { class: "header" }, m("h1", "Recipe App")),
       
-      m("div", that.signedin == false ? 
+      m("div",
         m("div", { class: "header" }, [
 
           // User login inputbox
@@ -208,10 +208,10 @@ var RecipesView = {
               "Register"
             )
           ]),
-        ])
-        : 
+        ]),
+        
         m("div", { class : "header"},
-          m("h2", `Welcome, you've logged in`),
+          m("h2", `Welcome`),
           m(
             "button",
             {
