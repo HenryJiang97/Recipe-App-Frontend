@@ -61,6 +61,29 @@ var RecipesViewController = {
   }
 };
 
+//  "/recipes/:recipe_id": SingleRecipeView,
+var SingleRecipeView = {
+  oninit: function(vnode) {
+    let recipe_id = vnode.attrs.recipe_id;
+    return RecipesViewController.loadRecipe(recipe_id);
+  },
+  view: function(vnode) {
+    let recipe_id = vnode.attrs.recipe_id;
+    let recipe = RecipesViewController.recipes[recipe_id];
+    if (recipe === undefined) return;
+    return [
+      m("div", { class: "header" }, m("h1", recipe.title)),
+      m("div", { class: "content" }, m("h2", recipe.description)),
+      m(
+        "div",
+        { class: "content" },
+        m("h2", "Total Time: " + recipe.totalTime)
+      ),
+      m("div", { class: "content" }, m("h2", "Directions " + recipe.directions))
+    ];
+  }
+};
+
 // Main view of recipes
 var RecipesView = {
   username: "",
@@ -223,22 +246,7 @@ function makeRecipe(recipe) {
 function make_recipe_object(recipe) {
   var a_recipe = {
     title: recipe.title,
-    view: function() {
-      return [
-        m("div", { class: "header" }, m("h1", recipe.title)),
-        m("div", { class: "content" }, m("h2", recipe.description)),
-        m(
-          "div",
-          { class: "content" },
-          m("h2", "Total Time: " + recipe.totalTime)
-        ),
-        m(
-          "div",
-          { class: "content" },
-          m("h2", "Directions " + recipe.directions)
-        )
-      ];
-    }
+    view: function() {}
   };
   return a_recipe;
 }
@@ -250,7 +258,16 @@ function _make_recipe_row(recipe) {
       "div",
       { class: "pure-u-1-1" },
       m("div", { class: "padded" }, [
-        m("h3", recipe.title),
+        m(
+          "h3",
+          m(
+            "a",
+            {
+              href: "#!/recipes/" + recipe.id
+            },
+            recipe.title
+          )
+        ),
         m("h4", recipe.description)
       ])
     )
@@ -273,7 +290,8 @@ var RecipeTest = {
 };
 
 var views = {
-  "/recipes": RecipesView
+  "/recipes": RecipesView,
+  "/recipes/:recipe_id": SingleRecipeView
 };
 
 function make_all_recipes(recipe_list) {
@@ -288,12 +306,12 @@ function make_all_recipes(recipe_list) {
 }
 
 // Needs to wait for recipe controller promise
-async function recipe_controller_promise() {
-  var x = await RecipesViewController.loadList();
-  make_all_recipes(RecipesViewController.list);
-  m.route(content, "/2", views);
-}
-recipe_controller_promise();
+// async function recipe_controller_promise() {
+//   var x = await RecipesViewController.loadList();
+//   make_all_recipes(RecipesViewController.list);
+//   m.route(content, "/2", views);
+// }
+// recipe_controller_promise();
 
 m.route(content, "/recipes", views);
 
@@ -336,11 +354,15 @@ content.onclick = function(e) {
 };
 
 var MenuView = {
+  oninit: function() {
+    return RecipesViewController.loadList();
+  },
   view: function() {
     return Object.entries(views).map(entry => {
       let route = entry[0];
       let view = entry[1];
       let title = view.title;
+      if (title === undefined) return;
       let clazz = "pure-menu-item";
       if (route == m.route.get()) {
         console.log("Selected ", route);
@@ -355,7 +377,7 @@ var MenuView = {
           title
         )
       );
-    });
+    }) + _make_recipe_links(RecipesViewController.);
   }
 };
 
