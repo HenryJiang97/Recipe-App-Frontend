@@ -37,7 +37,8 @@ var Api = {
   getRecipe: function(id) {
     return _api({
       method: "GET",
-      url: "/recipe/" + id
+      url: "/recipe/:id",
+      params: { id: id }
     });
   },
   addRecipe: function(recipe) {
@@ -45,44 +46,42 @@ var Api = {
       method: "POST",
       url: "/recipe",
       body: recipe // recipe should be a fully-formed recipe object with matching field names
-    })
+    });
   },
   updateRecipe: function(recipe) {
     return _api({
       method: "PUT",
       url: "/recipe",
       body: recipe // recipe should be a fully-formed recipe object with matching field names
-    })
+    });
   },
   deleteRecipe: function(recipe) {
     return _api({
       method: "DELETE",
       url: "/recipe",
       body: recipe // recipe should be a fully-formed recipe object with matching field names
-    })
-  },
+    });
+  }
 };
-var t = Api.getRecipes();
-console.log("t:", t);
 
-Api.addRecipe({
-  "id" : null,
-  "title" : "BBQ Chicken",
-  "description" : "Fresh grilled Barbecue Chicken",
-  "style" : null,
-  "ratings" : null,
-  "directions" : null,
-  "averageRating" : 0,
-  "yield" : 0,
-  "prepTime" : 0,
-  "waitTime" : 0,
-  "totalTime" : 0,
-  "cookTime" : 0,
-  "tag" : null,
-  "author" : null
-}).then(() => {
-  console.log("Created BBQ Chicken")
-});
+// Api.addRecipe({
+//   "id" : null,
+//   "title" : "BBQ Chicken",
+//   "description" : "Fresh grilled Barbecue Chicken",
+//   "style" : null,
+//   "ratings" : null,
+//   "directions" : null,
+//   "averageRating" : 0,
+//   "yield" : 0,
+//   "prepTime" : 0,
+//   "waitTime" : 0,
+//   "totalTime" : 0,
+//   "cookTime" : 0,
+//   "tag" : null,
+//   "author" : null
+// }).then(() => {
+//   console.log("Created BBQ Chicken")
+// });
 
 // Begin ViewControllers
 
