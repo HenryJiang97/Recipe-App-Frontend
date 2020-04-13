@@ -226,6 +226,7 @@ function register(username, password) {
     .then(user => {
       // user account created
       alert("Registered");
+
     })
     .catch(e => alert(e));
 }
@@ -242,7 +243,6 @@ function signin(username, password) {
       signedin = true;
       userLoggedin = username;
       username = "";
-      // console.log(this.signedin);
     })
     .catch(e => alert(e));
 }
@@ -255,7 +255,6 @@ function signout() {
       alert("Signed out");
       signedin = false;
       userLoggedin = "";
-      // console.log(this.signedin);
     })
     .catch(e => alert(e));
 };
@@ -311,6 +310,10 @@ var RecipeView = {
     ];
   }
 };
+
+function make_user_object(user) {
+  
+}
 
 function singleRecipeView(recipe) {
   m("div", { class: "header" }, m("h1", recipe.title)),
