@@ -107,12 +107,36 @@ var Api = {
 ////////////////////////////////////////////////////////////////////////////////////////
 // Build objects (Recipes, Users, Reviews)
 
-// Add User
+// Make new User
 function makeNewUser(username, password) {
   return {
     "id" : null,
-    
+    "userName" : username,
+    "email" : null,
+    "password" : password,
+    "favoriteRecipe" : null,
+    "userPreferences" : null
   }
+}
+
+// Make new Recipe
+function makeNewRecipe(name) {
+  return {
+      "id" : null,
+      "title" : name,
+      "description" : null,
+      "style" : null,
+      "ratings" : null,
+      "directions" : null,
+      "averageRating" : 0,
+      "yield" : 0,
+      "prepTime" : 0,
+      "waitTime" : 0,
+      "totalTime" : 0,
+      "cookTime" : 0,
+      "tag" : null,
+      "author" : null
+    }
 }
 
 // Api.addRecipe({
@@ -327,11 +351,11 @@ var RecipeView = {
   }
 };
 
-function make_user_object(user) {
-  var a_user = {
-    id: 
-  }
-}
+// function make_user_object(user) {
+//   var a_user = {
+//     id: 
+//   }
+// }
 
 function singleRecipeView(recipe) {
   m("div", { class: "header" }, m("h1", recipe.title)),
