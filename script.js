@@ -68,14 +68,19 @@ var Api = {
     });
   },
 
-  getUser: function(user) {
+  getUsers: function() {
     return _api({
       method: "GET",
-      url: "/user",
-      body: user // user should be a fully-formed user object with matching field names
+      url: "/user"
     });
   },
-
+  getUsers: function(id) {
+    return _api({
+      method: "GET",
+      url: "/user/:id",
+      params: { id: id }
+    });
+  },
   addUser: function(user) {
     return _api({
       method: "POST",
