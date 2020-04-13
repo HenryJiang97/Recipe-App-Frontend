@@ -104,6 +104,17 @@ var Api = {
   },
 };
 
+////////////////////////////////////////////////////////////////////////////////////////
+// Build objects (Recipes, Users, Reviews)
+
+// Add User
+function makeNewUser(username, password) {
+  return {
+    "id" : null,
+    
+  }
+}
+
 // Api.addRecipe({
 //   "id" : null,
 //   "title" : "BBQ Chicken",
