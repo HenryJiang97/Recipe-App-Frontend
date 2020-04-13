@@ -312,7 +312,9 @@ var RecipeView = {
 };
 
 function make_user_object(user) {
-  
+  var a_user = {
+    id: 
+  }
 }
 
 function singleRecipeView(recipe) {
