@@ -87,14 +87,14 @@ var Api = {
     return _api({
       method: "PUT",
       url: "/user",
-      body: recipe // user should be a fully-formed user object with matching field names
+      body: user // user should be a fully-formed user object with matching field names
     });
   },
   deleteUser: function(user) {
     return _api({
       method: "DELETE",
       url: "/user",
-      body: recipe // user should be a fully-formed user object with matching field names
+      body: user // user should be a fully-formed user object with matching field names
     });
   },
 };
@@ -120,7 +120,7 @@ var Api = {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// Begin ViewControllers
+// ViewControllers
 
 var RecipesViewController = {
   list: [],
