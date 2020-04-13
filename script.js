@@ -18,6 +18,10 @@ userbase
   })
   .catch(e => console.error(e));
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// APIs
+
 // Simple helper so we don't have to repeat the API_SERVER everywhere
 // _ prefix to indicate it's a helper function
 function _api(options) {
@@ -26,6 +30,7 @@ function _api(options) {
   return m.request(modifiedOptions);
 }
 
+// APIs to connect to backend
 var Api = {
   // This is effectively the "model" of your frontend
   getRecipes: function() {
@@ -61,7 +66,37 @@ var Api = {
       url: "/recipe",
       body: recipe // recipe should be a fully-formed recipe object with matching field names
     });
-  }
+  },
+
+  getUser: function(user) {
+    return _api({
+      method: "GET",
+      url: "/user",
+      body: user // user should be a fully-formed user object with matching field names
+    });
+  },
+
+  addUser: function(user) {
+    return _api({
+      method: "POST",
+      url: "/user",
+      body: user // user should be a fully-formed user object with matching field names
+    });
+  },
+  updateUser: function(user) {
+    return _api({
+      method: "PUT",
+      url: "/user",
+      body: recipe // user should be a fully-formed user object with matching field names
+    });
+  },
+  deleteUser: function(user) {
+    return _api({
+      method: "DELETE",
+      url: "/user",
+      body: recipe // user should be a fully-formed user object with matching field names
+    });
+  },
 };
 
 // Api.addRecipe({
@@ -83,6 +118,8 @@ var Api = {
 //   console.log("Created BBQ Chicken")
 // });
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
 // Begin ViewControllers
 
 var RecipesViewController = {
