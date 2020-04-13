@@ -176,102 +176,12 @@ var RecipesView = {
     return RecipesViewController.loadList();
   },
 
-  setUserName: function(name) {
-    username = name;
-    // console.log("UserName: ", this.username);
-  },
-
-  setPassword: function(psw) {
-    password = psw;
-    // console.log("Password: ", this.password);
-  },
-
-  register: function(username, password) {
-    userbase
-      .signUp({
-        username: username,
-        password: password
-      })
-      .then(user => {
-        // user account created
-        alert("Registered");
-      })
-      .catch(e => alert(e));
-  },
-
-  signin: function(username, password) {
-    userbase
-      .signIn({
-        username: username,
-        password: password
-      })
-      .then(user => {
-        // user logged in
-        alert("Signed in");
-        signedin = true;
-        userLoggedin = username;
-        username = "";
-        // console.log(this.signedin);
-      })
-      .catch(e => alert(e));
-  },
-
-  signout: function() {
-    userbase
-      .signOut()
-      .then(() => {
-        // user logged out
-        alert("Signed out");
-        signedin = false;
-        userLoggedin = "";
-        // console.log(this.signedin);
-      })
-      .catch(e => alert(e));
-  },
-
   view: function() {
     let that = this;
 
     return [
       m("div", { class: "header" }, m("h1", "Recipe App")),
-
-      m(
-        "div",
-        m("div", { class: "header" }, [
-          // User login inputbox
-          m("div", [
-            m("h2", "User Login"),
-            m("input[type=text]", {
-              oninput: function(e) {
-                that.setUserName(e.target.value);
-              }
-            }),
-            m("input[type=password]", {
-              oninput: function(e) {
-                that.setPassword(e.target.value);
-              }
-            })
-          ]),
-
-          // Login and register buttons
-          m("div", [
-            _make_button("Login", function() {
-              that.signin(username, password);
-            }),
-            _make_button("Register", function() {
-              that.register(username, password);
-            })
-          ])
-        ]),
-
-        m("div", { class: "header" }, [
-          m("h2", `Welcome ${userLoggedin}`),
-          _make_button("Sign out", function() {
-            that.signout();
-          })
-        ])
-      ),
-
+      _make_login_form(),
       m(
         "div",
         m("h2", { class: "header" }, "Recipes List"),
@@ -294,6 +204,45 @@ function _make_button(text, onclick) {
     },
     text
   );
+}
+
+function _make_login_form() {
+  return m(
+    "div",
+    m("div", { class: "header" }, [
+      // User login inputbox
+      m("div", [
+        m("h2", "User Login"),
+        m("input[type=text]", {
+          oninput: function(e) {
+            that.setUserName(e.target.value);
+          }
+        }),
+        m("input[type=password]", {
+          oninput: function(e) {
+            that.setPassword(e.target.value);
+          }
+        })
+      ]),
+
+      // Login and register buttons
+      m("div", [
+        _make_button("Login", function() {
+          that.signin(username, password);
+        }),
+        _make_button("Register", function() {
+          that.register(username, password);
+        })
+      ])
+    ]),
+
+    m("div", { class: "header" }, [
+      m("h2", `Welcome ${userLoggedin}`),
+      _make_button("Sign out", function() {
+        that.signout();
+      })
+    ])
+  )
 }
 
 var RecipeView = {
