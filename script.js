@@ -177,8 +177,6 @@ var RecipesView = {
   },
 
   view: function() {
-    let that = this;
-
     return [
       m("div", { class: "header" }, m("h1", "Recipe App")),
       _make_login_form(),
@@ -195,6 +193,9 @@ var RecipesView = {
   }
 };
 
+////////////////////////////////////////////////////////////////////
+// User authentication
+
 function _make_button(text, onclick) {
   return m(
     "button",
@@ -206,6 +207,59 @@ function _make_button(text, onclick) {
   );
 }
 
+function setUserName(name) {
+  username = name;
+  // console.log("UserName: ", this.username);
+}
+
+function setPassword(psw) {
+  password = psw;
+  // console.log("Password: ", this.password);
+}
+
+function register(username, password) {
+  userbase
+    .signUp({
+      username: username,
+      password: password
+    })
+    .then(user => {
+      // user account created
+      alert("Registered");
+    })
+    .catch(e => alert(e));
+}
+
+function signin(username, password) {
+  userbase
+    .signIn({
+      username: username,
+      password: password
+    })
+    .then(user => {
+      // user logged in
+      alert("Signed in");
+      signedin = true;
+      userLoggedin = username;
+      username = "";
+      // console.log(this.signedin);
+    })
+    .catch(e => alert(e));
+}
+
+function signout() {
+  userbase
+    .signOut()
+    .then(() => {
+      // user logged out
+      alert("Signed out");
+      signedin = false;
+      userLoggedin = "";
+      // console.log(this.signedin);
+    })
+    .catch(e => alert(e));
+};
+
 function _make_login_form() {
   return m(
     "div",
@@ -215,12 +269,12 @@ function _make_login_form() {
         m("h2", "User Login"),
         m("input[type=text]", {
           oninput: function(e) {
-            that.setUserName(e.target.value);
+            setUserName(e.target.value);
           }
         }),
         m("input[type=password]", {
           oninput: function(e) {
-            that.setPassword(e.target.value);
+            setPassword(e.target.value);
           }
         })
       ]),
@@ -228,10 +282,10 @@ function _make_login_form() {
       // Login and register buttons
       m("div", [
         _make_button("Login", function() {
-          that.signin(username, password);
+          signin(username, password);
         }),
         _make_button("Register", function() {
-          that.register(username, password);
+          register(username, password);
         })
       ])
     ]),
@@ -239,11 +293,14 @@ function _make_login_form() {
     m("div", { class: "header" }, [
       m("h2", `Welcome ${userLoggedin}`),
       _make_button("Sign out", function() {
-        that.signout();
+        signout();
       })
     ])
   )
 }
+
+
+///////////////////////////////////////////////////////////////////////////////////
 
 var RecipeView = {
   title: "A Recipe",
