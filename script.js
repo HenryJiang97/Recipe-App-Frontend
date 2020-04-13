@@ -126,25 +126,26 @@ var SingleRecipeView = {
   }
 };
 
+// Login info
+var username = "";
+var password = "";
+var userLoggedin = "";
+var signedin = false;
+
 // Main view of recipes
 var RecipesView = {
-  username: "",
-  password: "",
-  signedin: false,
-  userloggedin: "",
-
   title: "Recipes",
   oninit: function() {
     return RecipesViewController.loadList();
   },
 
   setUserName: function(name) {
-    this.username = name;
+    username = name;
     // console.log("UserName: ", this.username);
   },
 
   setPassword: function(psw) {
-    this.password = psw;
+    password = psw;
     // console.log("Password: ", this.password);
   },
 
@@ -170,10 +171,10 @@ var RecipesView = {
       .then(user => {
         // user logged in
         alert("Signed in");
-        this.signedin = true;
-        this.userloggedin = username;
-        this.username = "";
-        console.log(this.signedin);
+        signedin = true;
+        userLoggedin = username;
+        username = "";
+        // console.log(this.signedin);
       })
       .catch(e => alert(e));
   },
@@ -184,9 +185,9 @@ var RecipesView = {
       .then(() => {
         // user logged out
         alert("Signed out");
-        this.signedin = false;
-        this.userloggedin = "";
-        console.log(this.signedin);
+        signedin = false;
+        userLoggedin = "";
+        // console.log(this.signedin);
       })
       .catch(e => alert(e));
   },
@@ -218,16 +219,16 @@ var RecipesView = {
           // Login and register buttons
           m("div", [
             _make_button("Login", function() {
-              that.signin(that.username, that.password);
+              that.signin(username, password);
             }),
             _make_button("Register", function() {
-              that.register(that.username, that.password);
+              that.register(username, password);
             })
           ])
         ]),
 
         m("div", { class: "header" }, [
-          m("h2", `Welcome`),
+          m("h2", `Welcome ${userLoggedin}`),
           _make_button("Sign out", function() {
             that.signout();
           })
