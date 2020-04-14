@@ -266,7 +266,8 @@ function register(username, password) {
     .then(user => {
       // user account created
       alert("Registered");
-
+      // Add user to database
+      Api.addUser(makeNewUser(username, password));
     })
     .catch(e => alert(e));
 }
