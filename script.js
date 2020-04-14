@@ -200,18 +200,20 @@ var SingleRecipeView = {
       return;
     }
     var descriptionSteps = recipe.directions.map(direction =>
-      m("div", { class: "content" }, m("h2", direction.description)).
-      m("div", { class: "content" }, m("h2", direction.description))
+      m("div", { class: "content" }, [m("h2", direction.name), m("h3", direction.description)])
     );
+    // var ingridents = recipe.directions.map(direction =>
+    //   m("div", { class: "content" }, m("h2", direction.name), [m("h3", direction.description)])
+    // );
     var recipe_items = [
       m("div", { class: "header" }, m("h1", recipe.title)),
       m(
         "div",
         { class: "content" },
-        m("h2", "Total Time: " + recipe.totalTime + "  Yield: " + recipe.yield)
+        m("h2", "Total Time: " + recipe.totalTime + "    Yield: " + recipe.yield + "    Author: " + recipe.author)
       ),
       m("div", { class: "content" }, m("h3", recipe.description)),
-      m("div", { class: "content" }, m("h2", "Directions "))
+      m("div", { class: "content" }, m("h1", "Directions "))
     ];
     var recipeDescriptionsDirections = recipe_items.concat(descriptionSteps);
     return recipeDescriptionsDirections;
