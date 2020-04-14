@@ -208,8 +208,8 @@ var SingleRecipeView = {
       m("div", { class: "content" }, m("h3", recipe.description)),
       
       ),
-      m("div", { class: "content" }, m("h2", "Directions " + recipe.directions)),
-      recipe.direction.map()
+      m("div", { class: "content" }, m("h2", "Directions "),
+      recipe.direction.map(description =>m("div", { class: "content" }, m("h2", "Directions "))
     ];
   }
 };
