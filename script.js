@@ -164,6 +164,8 @@ Api.addUser({
   password: "3141592",
   favoriteRecipe: null,
   userPreferences: null
+}).then(() => {
+  console.log("Created BBQ Chicken")
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////
