@@ -18,7 +18,6 @@ userbase
   })
   .catch(e => console.error(e));
 
-
 //////////////////////////////////////////////////////////////////////////////////////////
 // APIs
 
@@ -101,7 +100,7 @@ var Api = {
       url: "/user",
       body: user // user should be a fully-formed user object with matching field names
     });
-  },
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -110,33 +109,33 @@ var Api = {
 // Make new User
 function makeNewUser(username, password) {
   return {
-    "id" : null,
-    "userName" : username,
-    "email" : null,
-    "password" : password,
-    "favoriteRecipe" : null,
-    "userPreferences" : null
-  }
+    id: null,
+    userName: username,
+    email: null,
+    password: password,
+    favoriteRecipe: null,
+    userPreferences: null
+  };
 }
 
 // Make new Recipe
 function makeNewRecipe(name) {
   return {
-      "id" : null,
-      "title" : name,
-      "description" : null,
-      "style" : null,
-      "ratings" : null,
-      "directions" : null,
-      "averageRating" : 0,
-      "yield" : 0,
-      "prepTime" : 0,
-      "waitTime" : 0,
-      "totalTime" : 0,
-      "cookTime" : 0,
-      "tag" : null,
-      "author" : null
-    }
+    id: null,
+    title: name,
+    description: null,
+    style: null,
+    ratings: null,
+    directions: null,
+    averageRating: 0,
+    yield: 0,
+    prepTime: 0,
+    waitTime: 0,
+    totalTime: 0,
+    cookTime: 0,
+    tag: null,
+    author: null
+  };
 }
 
 // Api.addRecipe({
@@ -159,14 +158,13 @@ function makeNewRecipe(name) {
 // });
 
 Api.addUser({
-  "id" : null,
-  "userName" : "henry",
-  "email" : null,
-  "password" : "123456",
-  "favoriteRecipe" : null,
-  "userPreferences" : null
-})
-
+  id: null,
+  userName: "henry",
+  email: null,
+  password: "123456",
+  favoriteRecipe: null,
+  userPreferences: null
+});
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // ViewControllers
@@ -205,7 +203,7 @@ var SingleRecipeView = {
       m(
         "div",
         { class: "content" },
-        m("h2", "Total Time: " + recipe.totalTime)
+        m("h2", "Total Time: " + recipe.totalTime + "  Yield: " + recipe.yield)
       ),
       m("div", { class: "content" }, m("h2", "Directions " + recipe.directions))
     ];
@@ -307,7 +305,7 @@ function signout() {
       userLoggedin = "";
     })
     .catch(e => alert(e));
-};
+}
 
 function _make_login_form() {
   return m(
@@ -345,9 +343,8 @@ function _make_login_form() {
         signout();
       })
     ])
-  )
+  );
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -360,7 +357,6 @@ var RecipeView = {
     ];
   }
 };
-
 
 function singleRecipeView(recipe) {
   m("div", { class: "header" }, m("h1", recipe.title)),
