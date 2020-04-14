@@ -200,6 +200,7 @@ var SingleRecipeView = {
       return;
     }
     var descriptionSteps = recipe.directions.map(direction =>
+      m("div", { class: "content" }, m("h2", direction.description)).
       m("div", { class: "content" }, m("h2", direction.description))
     );
     var recipe_items = [
@@ -212,8 +213,8 @@ var SingleRecipeView = {
       m("div", { class: "content" }, m("h3", recipe.description)),
       m("div", { class: "content" }, m("h2", "Directions "))
     ];
-    recipe_items.concat(descriptionSteps);
-    return recipe_items;
+    var recipeDescriptionsDirections = recipe_items.concat(descriptionSteps);
+    return recipeDescriptionsDirections;
   }
 };
 
