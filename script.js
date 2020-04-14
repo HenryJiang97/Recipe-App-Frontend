@@ -157,14 +157,14 @@ function makeNewRecipe(name) {
 //   console.log("Created BBQ Chicken")
 // });
 
-Api.addUser({
-  id: null,
-  userName: "henry",
-  email: null,
-  password: "123456",
-  favoriteRecipe: null,
-  userPreferences: null
-});
+// Api.addUser({
+//   id: null,
+//   userName: "henry",
+//   email: null,
+//   password: "123456",
+//   favoriteRecipe: null,
+//   userPreferences: null
+// });
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // ViewControllers
