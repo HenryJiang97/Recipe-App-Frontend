@@ -73,7 +73,7 @@ var Api = {
       url: "/user"
     });
   },
-  getUsers: function(id) {
+  getUser: function(id) {
     return _api({
       method: "GET",
       url: "/user/:id",
@@ -83,7 +83,7 @@ var Api = {
   addUser: function(user) {
     return _api({
       method: "POST",
-      url: "/user",
+      url: "/rdeuser",
       body: user // user should be a fully-formed user object with matching field names
     });
   },
