@@ -158,7 +158,7 @@ function makeNewRecipe(name) {
 // });
 
 Api.addUser({
-  id: null,
+  id: 1,
   userName: "gabriel",
   email: null,
   password: "3141592",
