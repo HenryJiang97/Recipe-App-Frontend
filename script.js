@@ -83,7 +83,7 @@ var Api = {
   addUser: function(user) {
     return _api({
       method: "POST",
-      url: "/rdeuser",
+      url: "/user",
       body: user // user should be a fully-formed user object with matching field names
     });
   },
