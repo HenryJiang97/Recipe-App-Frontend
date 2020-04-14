@@ -157,16 +157,16 @@ function makeNewRecipe(name) {
 //   console.log("Created BBQ Chicken")
 // });
 
-Api.addUser({
-  id: null,
-  userName: "gabriel",
-  email: null,
-  password: "3141592",
-  favoriteRecipe: null,
-  userPreferences: null
-}).then(() => {
-  console.log("Created BBQ Chicken");
-});
+// Api.addUser({
+//   id: null,
+//   userName: "gabriel",
+//   email: null,
+//   password: "3141592",
+//   favoriteRecipe: null,
+//   userPreferences: null
+// }).then(() => {
+//   console.log("Created BBQ Chicken");
+// });
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // ViewControllers
@@ -205,13 +205,13 @@ var SingleRecipeView = {
     //   m("div", { class: "content" }, m("h2", direction.name), [m("h3", direction.description)])
     // );
     var total_time = recipe.totalTime/60
-    var total_time_dec_2
+    total_time = total_time.toFixed(2)
     var recipe_items = [
       m("div", { class: "header" }, m("h1", recipe.title)),
       m(
         "div",
         { class: "content" },
-        m("h2", "Total Time: " + recipe.totalTime/60 + "    Yield: " + recipe.yield + "    Author: " + recipe.author)
+        m("h2", "Total Time: " + total_time + " minutes" + "    Yield: " + recipe.yield + "    Author: " + recipe.author)
       ),
       m("div", { class: "content" }, m("h3", recipe.description)),
       m("div", { class: "content" }, m("h1", "Directions "))
