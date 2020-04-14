@@ -158,7 +158,7 @@ function makeNewRecipe(name) {
 // });
 
 Api.addUser({
-  id: 1,
+  id: null,
   userName: "gabriel",
   email: null,
   password: "3141592",
@@ -201,13 +201,15 @@ var SingleRecipeView = {
     }
     return [
       m("div", { class: "header" }, m("h1", recipe.title)),
-      m("div", { class: "content" }, m("h2", recipe.description)),
       m(
         "div",
         { class: "content" },
-        m("h2", "Total Time: " + recipe.totalTime + "  Yield: " + recipe.yield)
+        m("h2", "Total Time: " + recipe.totalTime + "  Yield: " + recipe.yield),
+      m("div", { class: "content" }, m("h3", recipe.description)),
+      
       ),
-      m("div", { class: "content" }, m("h2", "Directions " + recipe.directions))
+      m("div", { class: "content" }, m("h2", "Directions " + recipe.directions)),
+      recipe.direction.map()
     ];
   }
 };
