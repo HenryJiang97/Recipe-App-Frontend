@@ -165,7 +165,7 @@ Api.addUser({
   favoriteRecipe: null,
   userPreferences: null
 }).then(() => {
-  console.log("Created BBQ Chicken")
+  console.log("Created BBQ Chicken");
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -199,17 +199,28 @@ var SingleRecipeView = {
       RecipesViewController.loadRecipe(recipe_id);
       return;
     }
-    recipe.direction.map(direction => m("div", { class: "content" }, m("h2",  direction.description))).values()
-    return [
+    var descriptionSteps = recipe.directions.map(direction =>
+      m("div", { class: "content" }, m("h2", direction.description))
+    );
+    var recipe_items = [
       m("div", { class: "header" }, m("h1", recipe.title)),
-      m("div",{ class: "content" }, m("h2", "Total Time: " + recipe.totalTime + "  Yield: " + recipe.yield)),
+      m(
+        "div",
+        { class: "content" },
+        m("h2", "Total Time: " + recipe.totalTime + "  Yield: " + recipe.yield)
+      ),
       m("div", { class: "content" }, m("h3", recipe.description)),
-      m("div", { class: "content" }, m("h2", "Directions ")),
-      
+      m("div", { class: "content" }, m("h2", "Directions "))
     ];
+    recipe_items.concat(descriptionSteps);
+    return recipe_items;
   }
 };
 
+// function directionList(recipe){
+//   for(const description of recipe.description)
+
+// }
 // Login info
 var username = "";
 var password = "";
