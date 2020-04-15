@@ -3,6 +3,9 @@
 
 var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
 
+
+var userLoggedin = "";
+var signedin = false;
 // Initialize userbase
 userbase
   .init({
@@ -10,10 +13,13 @@ userbase
   })
   .then(session => {
     // SDK initialized successfully
-    console.log("UserBase SDK loaded");
+    // console.log("UserBase SDK loaded");
     if (session.user) {
       // there is a valid active session
-      console.log(session.user.username);
+      userLoggedin = session.user.username;
+      signedin = true;
+      console.log("Signed in");
+      console.log("User Logged in: ", session.user.username);
     }
   })
   .catch(e => console.error(e));
@@ -240,9 +246,6 @@ var SingleRecipeView = {
 // Login info
 var username = "";
 var password = "";
-var userLoggedin = "";
-var signedin = false;
-console.log(signedin);
 
 // Main view of recipes
 var RecipesView = {
@@ -551,7 +554,7 @@ var MenuView = {
         if (title === undefined) return;
         let clazz = "pure-menu-item";
         if (route == m.route.get()) {
-          console.log("Selected ", route);
+          // console.log("Selected ", route);
           clazz += " pure-menu-selected";
         }
         return m(
