@@ -243,6 +243,8 @@ var SingleRecipeView = {
     return recipeDescriptionsDirections;
   }
 };
+
+
 // Login info
 var username = "";
 var password = "";
@@ -373,7 +375,25 @@ function _make_login_form() {
       _make_button("Sign out", function() {
         signout();
       })
-    ])
+    ]),
+
+    m("div", { class: "header"}, 
+      m("h2", "You can add new recipe here"),
+      _make_button("Add new Recipe")
+    )
+  );
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// Add recipe form
+
+function _make_add_recipe_form(label) {
+  return m(
+    "div",
+    [
+      _make_button(label),
+    ]
   );
 }
 
