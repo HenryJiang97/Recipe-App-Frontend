@@ -165,7 +165,7 @@ function makeNewRecipe(name) {
 //   favoriteRecipe: null,
 //   userPreferences: null
 // }).then(() => {
-//   console.log("Created BBQ Chicken");
+//   console.log("Created BBQ Chicken")
 // });
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -199,44 +199,27 @@ var SingleRecipeView = {
       RecipesViewController.loadRecipe(recipe_id);
       return;
     }
-
-
-    // var ingridents = recipe.directions.map(direction =>
-    //   m("div", { class: "content" }, m("h2", direction.name), [m("h3", direction.description)])
-    // );
-    var total_time = recipe.totalTime/60
-    total_time = total_time.toFixed(2)
-    var recipe_items = [
+    return [
       m("div", { class: "header" }, m("h1", recipe.title)),
       m(
         "div",
         { class: "content" },
-        m("h2", "Total Time: " + total_time + " minutes" + "    Yield: " + recipe.yield + "    Author: " + recipe.author)
-      ),
+        m("h2", "Total Time: " + recipe.totalTime + "  Yield: " + recipe.yield),
       m("div", { class: "content" }, m("h3", recipe.description)),
-      m("div", { class: "content" }, m("h1", "Directions "))
+      
+      ),
+      m("div", { class: "content" }, m("h2", "Directions ")),
+      recipe.map(direction =>m("div", { class: "content" }, m("h2", "Directions ")))
     ];
-    if(recipe.directions == null){
-      return recipe_items
-
-    }
-    var descriptionSteps = recipe.directions.map(direction =>
-      m("div", { class: "content" }, [m("h2", direction.name), m("h3", direction.description)])
-    );
-    var recipeDescriptionsDirections = recipe_items.concat(descriptionSteps);
-    return recipeDescriptionsDirections;
   }
 };
 
-// function directionList(recipe){
-//   for(const description of recipe.description)
-
-// }
 // Login info
 var username = "";
 var password = "";
 var userLoggedin = "";
 var signedin = false;
+console.log(signedin ? "Signed in" : "Signed out");
 
 // Main view of recipes
 var RecipesView = {
