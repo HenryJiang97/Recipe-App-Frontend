@@ -219,7 +219,7 @@ var username = "";
 var password = "";
 var userLoggedin = "";
 var signedin = false;
-console.log(signedin ? "Signed in" : "Signed out");
+console.log(signedin);
 
 // Main view of recipes
 var RecipesView = {
