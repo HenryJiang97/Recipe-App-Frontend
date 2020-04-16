@@ -227,8 +227,8 @@ var SingleRecipeView = {
             recipe.author
         )
       ),
-      m("div", { class: "content" }, m("h3", recipe.description)),
-      m("div", { class: "content" }, m("h1", "Directions "))
+      m("div", { class: "content" }, m("h3", recipe.description))
+      
     ];
     if (recipe.directions == null) {
       return recipe_items;
@@ -241,19 +241,21 @@ var SingleRecipeView = {
       ])
     );
     var ingredients_list = createIngredients(recipe);
+    recipe_items.push(m("div", { class: "content" }, m("h1", "Ingredients ")))
     var recipeIngredients = recipe_items.concat(ingredients_list);
+    recipeIngredients.push(m("div", { class: "content" }, m("h1", "Directions ")))
     var recipeDescriptionsDirections = recipeIngredients.concat(descriptionSteps);
     return recipeDescriptionsDirections;
   }
 };
 
 function createIngredients(recipe){
-  var ingredient_list = [];
+  var ingredient_list = new Array();
   for(const direction of recipe.directions){
     if(direction.ingredients != null){
       for(const ingredient of direction.ingredients){
-        var html_ingredient =  m("div", { class: "content" }, m("h3", ingredient.amount + ingredient.unit + ingredient.name))
-        ingredient_list.add(html_ingredient)
+        var html_ingredient =  m("div", { class: "content" }, m("h3", ingredient.amount + " " + ingredient.unit + " " + ingredient.name))
+        ingredient_list.push(html_ingredient)
       }
     }
   }
@@ -401,7 +403,7 @@ function _make_login_form() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// Add recipe form
+// Add new recipe by users
 
 function _make_add_recipe_form(label) {
   return m(
@@ -409,9 +411,14 @@ function _make_add_recipe_form(label) {
     [
       _make_button(label, function() {
         console.log("Add recipe button clicked");
+        
       }),
     ]
   );
+}
+
+function addRecipe() {
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
