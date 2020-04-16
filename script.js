@@ -405,7 +405,7 @@ function _make_login_form() {
 ///////////////////////////////////////////////////////////////////////////////////
 // Add new recipe by users
 
-var styleList = ["American", "Japanese", "Chinese", "Korean"];
+var styleList = [{ style: "American", id: "american"}, { name: "Chinese", id: "chinese" }, { name: "Japanese", id: "japanese" }, { name: "Korean", id: "korean" }, ];
 var ratings = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
 
 
