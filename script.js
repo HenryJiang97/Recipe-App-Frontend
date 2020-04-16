@@ -392,7 +392,9 @@ function _make_add_recipe_form(label) {
   return m(
     "div",
     [
-      _make_button(label),
+      _make_button(label, function() {
+        console.log("Add recipe button clicked");
+      }),
     ]
   );
 }
