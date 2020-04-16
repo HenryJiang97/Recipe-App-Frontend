@@ -130,8 +130,8 @@ function makeNewRecipe(author, name, description, style, ratings) {
     id: null,
     title: name,
     description: description,
-    style: style,
-    ratings: ratings,
+    style: null,
+    ratings: null,
     directions: null,
     averageRating: 0,
     yield: 0,
@@ -146,8 +146,8 @@ function makeNewRecipe(author, name, description, style, ratings) {
 
 // Api.addRecipe({
 //   "id" : null,
-//   "title" : "BBQ Chicken",
-//   "description" : "Fresh grilled Barbecue Chicken",
+//   "title" : "Chicken Bake",
+//   "description" : "Baked Chicken",
 //   "style" : null,
 //   "ratings" : null,
 //   "directions" : null,
