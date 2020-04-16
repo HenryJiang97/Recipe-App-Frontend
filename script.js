@@ -233,8 +233,8 @@ var SingleRecipeView = {
     if (recipe.directions == null) {
       return recipe_items;
     }
-    var ingridentList = recipe.direction.map(direction=> direction)
-    var descriptionSteps = recipe.directions.map(direction => direction.ingredients).map(ingrident)
+    // var ingridentList = recipe.direction.map(direction=> direction)
+    var descriptionSteps = recipe.directions.map(direction =>
       m("div", { class: "content" }, [
         m("h2", direction.name),
         m("h3", direction.description)
@@ -245,6 +245,11 @@ var SingleRecipeView = {
   }
 };
 
+function createIngridents(recipe){
+  for(const direction of recipe.directions){
+    if direction
+  }
+}
 
 // Login info
 var username = "";
