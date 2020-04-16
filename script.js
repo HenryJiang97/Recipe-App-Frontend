@@ -405,7 +405,24 @@ function _make_login_form() {
 ///////////////////////////////////////////////////////////////////////////////////
 // Add new recipe by users
 
+var styleList = ["American", "Japanese", "Chinese", "Korean"];
+var ratings = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
 
+
+var DropDownExample = {
+  controller: function () {
+    var ctrl = this
+    ctrl.data = m.prop([{ name: 'alice', id: 1}, { name: 'bob', id: 2 }])
+    ctrl.selectedId = m.prop()
+  },
+  view: function (ctrl) {
+    return m('select', { onchange: m.withAttr('value', ctrl.selectedId) }, [
+      ctrl.data().map(function(person) {
+        return m('option', { value: person.id }, person.name)
+      })
+    ])
+  }
+}
 
 function _make_add_recipe_form(label) {
   return m(
@@ -416,10 +433,18 @@ function _make_add_recipe_form(label) {
           m("p", "Name"),
           m("input")
         ]),
-        
-        m("p", "Description: "),
-        m("p", "Style"),
-        m("p", "Rating")
+        m("div", [
+          m("p", "Description: "),
+          m("input")
+        ]),
+        m("div", [
+          m("p", "Style"),
+          m.component(styleList)
+        ]),
+        m("div", [
+          m("p", "Rating"),
+          m("input")
+        ]),
       ]),
       _make_button(label, function() {
         console.log("Add recipe button clicked");  
