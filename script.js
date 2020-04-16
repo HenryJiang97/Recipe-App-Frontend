@@ -125,7 +125,7 @@ function makeNewUser(username, password) {
 }
 
 // Make new Recipe
-function makeNewRecipe(name) {
+function makeNewRecipe(name, description, style, ratings) {
   return {
     id: null,
     title: name,
@@ -405,13 +405,24 @@ function _make_login_form() {
 ///////////////////////////////////////////////////////////////////////////////////
 // Add new recipe by users
 
+
+
 function _make_add_recipe_form(label) {
   return m(
     "div",
     [
-      _make_button(label, function() {
-        console.log("Add recipe button clicked");
+      m("div", [
+        m("div", [
+          m("p", "Name"),
+          m("input")
+        ]),
         
+        m("p", "Description: "),
+        m("p", "Style"),
+        m("p", "Rating")
+      ]),
+      _make_button(label, function() {
+        console.log("Add recipe button clicked");  
       }),
     ]
   );
@@ -420,6 +431,8 @@ function _make_add_recipe_form(label) {
 function addRecipe() {
 
 }
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 
