@@ -129,10 +129,10 @@ function makeNewRecipe(author, name, description, style, ratings) {
   return {
     id: null,
     title: name,
-    description: null,
+    description: description,
     style: style,
     ratings: ratings,
-    directions: description,
+    directions: null,
     averageRating: 0,
     yield: 0,
     prepTime: 0,
