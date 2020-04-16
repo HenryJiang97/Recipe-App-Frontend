@@ -130,8 +130,8 @@ function makeNewRecipe(author, name, description, style, ratings) {
     id: null,
     title: name,
     description: description,
-    style: null,
-    ratings: null,
+    style: style,
+    ratings: ratings,
     directions: null,
     averageRating: 0,
     yield: 0,
@@ -306,12 +306,10 @@ function _make_button(text, onclick) {
 
 function setUserName(name) {
   username = name;
-  // console.log("UserName: ", this.username);
 }
 
 function setPassword(psw) {
   password = psw;
-  // console.log("Password: ", this.password);
 }
 
 function register(username, password) {
