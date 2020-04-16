@@ -163,6 +163,25 @@ function makeNewRecipe(author, name, description, style, ratings) {
 //   console.log("Created BBQ Chicken")
 // });
 
+Api.addRecipe({
+  id: null,
+  title: "Chicken",
+  description: "Hahaha",
+  style: "American",
+  ratings: "4.5",
+  directions: null,
+  averageRating: 0,
+  yield: 0,
+  prepTime: 0,
+  waitTime: 0,
+  totalTime: 0,
+  cookTime: 0,
+  tag: null,
+  author: "henry"
+}).then(() => {
+  console.log("Created BBQ Chicken")
+});
+
 // Api.addUser({
 //   id: null,
 //   userName: "gabriel",
@@ -475,9 +494,13 @@ function _make_add_recipe_form(label) {
         console.log(description);
         console.log(style);
         console.log(rating);
+        var newRecipe = makeNewRecipe(userLoggedin, name, description, style, rating);
+        console.log(newRecipe);
+
+        // If signed in, post the new recipe to the database
         if (signedin == true) {
           Api.addRecipe(
-            makeNewRecipe(userLoggedin, name, description, style, rating)
+            newRecipe
           ).then(() => {
               console.log(`Added ${name}`)
             });
