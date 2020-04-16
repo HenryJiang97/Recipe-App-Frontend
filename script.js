@@ -240,15 +240,24 @@ var SingleRecipeView = {
         m("h3", direction.description)
       ])
     );
-    var recipeDescriptionsDirections = recipe_items.concat(descriptionSteps);
+    var ingredients_list = createIngredients(recipe);
+    var recipeIngredients = recipe_items.concat(ingredients_list);
+    var recipeDescriptionsDirections = recipeIngredients.concat(descriptionSteps);
     return recipeDescriptionsDirections;
   }
 };
 
-function createIngridents(recipe){
+function createIngredients(recipe){
+  var ingredient_list = [];
   for(const direction of recipe.directions){
-    if direction
+    if(direction.ingredients != null){
+      for(const ingredient of direction.ingredients){
+        var html_ingredient =  m("div", { class: "content" }, m("h3", ingredient.amount + ingredient.unit + ingredient.name))
+        ingredient_list.add(html_ingredient)
+      }
+    }
   }
+  return ingredient_list;
 }
 
 // Login info
