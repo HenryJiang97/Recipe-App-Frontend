@@ -125,14 +125,14 @@ function makeNewUser(username, password) {
 }
 
 // Make new Recipe
-function makeNewRecipe(name, description, style, ratings) {
+function makeNewRecipe(author, name, description, style, ratings) {
   return {
     id: null,
     title: name,
     description: null,
-    style: null,
-    ratings: null,
-    directions: null,
+    style: style,
+    ratings: ratings,
+    directions: description,
     averageRating: 0,
     yield: 0,
     prepTime: 0,
@@ -140,7 +140,7 @@ function makeNewRecipe(name, description, style, ratings) {
     totalTime: 0,
     cookTime: 0,
     tag: null,
-    author: null
+    author: author
   };
 }
 
@@ -477,13 +477,18 @@ function _make_add_recipe_form(label) {
         console.log(description);
         console.log(style);
         console.log(rating);
+        if (signedin == true) {
+          Api.addRecipe(
+            makeNewRecipe(userLoggedin, name, description, style, rating)
+          ).then(() => {
+              console.log(`Added ${name}`)
+            });
+        } else {
+          alert("Please sign in!");
+        }
       }),
     ]
   );
-}
-
-function addRecipe() {
-
 }
 
 
