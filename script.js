@@ -130,8 +130,8 @@ function makeNewRecipe(author, name, description, style, ratings) {
     id: null,
     title: name,
     description: description,
-    style: style,
-    ratings: ratings,
+    style: null,
+    ratings: null,
     directions: null,
     averageRating: 0,
     yield: 0,
@@ -471,10 +471,6 @@ function _make_add_recipe_form(label) {
       ]),
       _make_button(label, function() {
         console.log("Add recipe button clicked");
-        console.log(name);
-        console.log(description);
-        console.log(style);
-        console.log(rating);
         var newRecipe = makeNewRecipe(userLoggedin, name, description, style, rating);
         console.log(newRecipe);
 
