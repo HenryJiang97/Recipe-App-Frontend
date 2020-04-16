@@ -405,20 +405,20 @@ function _make_login_form() {
 ///////////////////////////////////////////////////////////////////////////////////
 // Add new recipe by users
 
-var styleList = [{ style: "American", id: "american"}, { name: "Chinese", id: "chinese" }, { name: "Japanese", id: "japanese" }, { name: "Korean", id: "korean" }, ];
+var styleList = [{ name: "American", id: "american"}, { name: "Chinese", id: "chinese" }, { name: "Japanese", id: "japanese" }, { name: "Korean", id: "korean" }, ];
 var ratings = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
 
 
-var DropDownExample = {
+var styleDropDown = {
   controller: function () {
     var ctrl = this
-    ctrl.data = m.prop([{ name: 'alice', id: 1}, { name: 'bob', id: 2 }])
+    ctrl.data = m.prop(styleList)
     ctrl.selectedId = m.prop()
   },
   view: function (ctrl) {
     return m('select', { onchange: m.withAttr('value', ctrl.selectedId) }, [
-      ctrl.data().map(function(person) {
-        return m('option', { value: person.id }, person.name)
+      ctrl.data().map(function(style) {
+        return m('option', { value: style.id }, style.name)
       })
     ])
   }
@@ -439,7 +439,7 @@ function _make_add_recipe_form(label) {
         ]),
         m("div", [
           m("p", "Style"),
-          m.component(styleList)
+          styleDropDown
         ]),
         m("div", [
           m("p", "Rating"),
