@@ -140,7 +140,7 @@ function makeNewRecipe(author, name, description, style, ratings) {
     totalTime: 0,
     cookTime: 0,
     tag: null,
-    author: author
+    author: null
   };
 }
 
@@ -162,25 +162,6 @@ function makeNewRecipe(author, name, description, style, ratings) {
 // }).then(() => {
 //   console.log("Created BBQ Chicken")
 // });
-
-Api.addRecipe({
-  id: null,
-  title: "Chicken",
-  description: "Hahaha",
-  style: "American",
-  ratings: "4.5",
-  directions: null,
-  averageRating: 0,
-  yield: 0,
-  prepTime: 0,
-  waitTime: 0,
-  totalTime: 0,
-  cookTime: 0,
-  tag: null,
-  author: "henry"
-}).then(() => {
-  console.log("Created BBQ Chicken")
-});
 
 // Api.addUser({
 //   id: null,
