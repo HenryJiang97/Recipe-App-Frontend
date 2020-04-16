@@ -424,6 +424,11 @@ var styleDropDown = {
   }
 }
 
+var name = "";
+var description = "";
+var style = "";
+var rating = 0.0;
+
 function _make_add_recipe_form(label) {
   return m(
     "div",
@@ -431,23 +436,47 @@ function _make_add_recipe_form(label) {
       m("div", [
         m("div", [
           m("p", "Name"),
-          m("input")
+          m("input[type=text]", {
+              oninput: function(e) {
+                name = e.target.value;
+              }
+            }
+          )
         ]),
         m("div", [
           m("p", "Description: "),
-          m("input")
+          m("input[type=text]", {
+            oninput: function(e) {
+              description = e.target.value;
+            }
+          }
+        )
         ]),
         m("div", [
           m("p", "Style"),
-          styleDropDown
+          m("input[type=text]", {
+            oninput: function(e) {
+              style = e.target.value;
+            }
+          }
+        )
         ]),
         m("div", [
           m("p", "Rating"),
-          m("input")
+          m("input[type=text]", {
+            oninput: function(e) {
+              rating = e.target.value;
+            }
+          }
+        )
         ]),
       ]),
       _make_button(label, function() {
-        console.log("Add recipe button clicked");  
+        console.log("Add recipe button clicked");
+        console.log(name);
+        console.log(description);
+        console.log(style);
+        console.log(rating);
       }),
     ]
   );
