@@ -234,7 +234,7 @@ var SingleRecipeView = {
       return recipe_items;
     }
     var ingridentList = recipe.direction.map(direction=> direction)
-    var descriptionSteps = recipe.directions.map(direction =>
+    var descriptionSteps = recipe.directions.map(direction => direction.ingredients).map(ingrident)
       m("div", { class: "content" }, [
         m("h2", direction.name),
         m("h3", direction.description)
@@ -380,7 +380,7 @@ function _make_login_form() {
 
     m("div", { class: "header"}, 
       m("h2", "You can add new recipe here"),
-      _make_button("Add new Recipe")
+      _make_add_recipe_form("Add new Recipe")
     )
   );
 }
