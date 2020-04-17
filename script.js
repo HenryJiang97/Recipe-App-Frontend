@@ -391,6 +391,7 @@ function signin(username, password) {
       signedin = true;
       userLoggedin = username;
       username = "";
+      location.reload()
     })
     .catch(e => alert(e));
 }
@@ -403,11 +404,23 @@ function signout() {
       alert("Signed out");
       signedin = false;
       userLoggedin = "";
+      location.reload()
     })
     .catch(e => alert(e));
 }
 
 function _make_login_form() {
+  if (signedin == true) {
+    return m("div", m("div", { class: "header" }, [
+      m("h2", `Welcome ${userLoggedin}`),
+      _make_button("Sign out", function() {
+        signout();
+      })
+    ]),
+      m("div", { class: "header"}, 
+      m("h2", "You can add new recipe here"),
+      _make_add_recipe_form("Add new Recipe")));
+  }
   return m(
     "div",
     m("div", { class: "header" }, [
@@ -435,20 +448,10 @@ function _make_login_form() {
           register(username, password);
         })
       ])
-    ]),
+    ])
+    );
 
-    m("div", { class: "header" }, [
-      m("h2", `Welcome ${userLoggedin}`),
-      _make_button("Sign out", function() {
-        signout();
-      })
-    ]),
-
-    m("div", { class: "header"}, 
-      m("h2", "You can add new recipe here"),
-      _make_add_recipe_form("Add new Recipe")
-    )
-  );
+    
 }
 
 
