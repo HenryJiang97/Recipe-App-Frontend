@@ -261,10 +261,11 @@ var SingleRecipeView = {
             recipe.author
         )
       ),
-      m("div", { class: "content" }, m("h3", recipe.description)),
-      _make_rating_form(),
+      m("div", { class: "content" }, m("h3", recipe.description))
+      
     ];
     if (recipe.directions == null) {
+      recipe_items.push(_make_rating_form())
       return recipe_items;
     }
     // var ingridentList = recipe.direction.map(direction=> direction)
@@ -279,6 +280,7 @@ var SingleRecipeView = {
     var recipeIngredients = recipe_items.concat(ingredients_list);
     recipeIngredients.push(m("div", { class: "content" }, m("h1", "Directions ")))
     var recipeDescriptionsDirections = recipeIngredients.concat(descriptionSteps);
+    recipeDescriptionsDirections.push(_make_rating_form())
     return recipeDescriptionsDirections;
   }
 };
