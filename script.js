@@ -515,7 +515,7 @@ function _make_recipe_rows(recipe_list) {
 function makeRecipe(recipe) {
   return [
     m("div", { class: "header" }, m("h1", recipe.title)),
-    m("div", { class: "content" }, m("h2", recipe.description))
+    m("div", { class: "content" }, m("h2", recipe.description)),
   ];
 }
 
