@@ -177,6 +177,12 @@ function makeNewRecipe(author, name, description, style, ratings) {
 //////////////////////////////////////////////////////////////////////////////////////////
 // ViewControllers
 
+function _make_rating_form() {
+  return (
+    m("Button")
+  )
+}
+
 var RecipesViewController = {
   list: [],
   recipes: {},
@@ -192,6 +198,7 @@ var RecipesViewController = {
   }
 };
 
+// Detailed view for every recipe
 //  "/recipes/:recipe_id": SingleRecipeView,
 var SingleRecipeView = {
   oninit: function(vnode) {
@@ -227,8 +234,8 @@ var SingleRecipeView = {
             recipe.author
         )
       ),
-      m("div", { class: "content" }, m("h3", recipe.description))
-      
+      m("div", { class: "content" }, m("h3", recipe.description)),
+      _make_rating_form()
     ];
     if (recipe.directions == null) {
       return recipe_items;
