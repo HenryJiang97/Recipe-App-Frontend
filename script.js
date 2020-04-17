@@ -275,17 +275,16 @@ var SingleRecipeView = {
       recipe_items.push(_make_rating_form())
       return recipe_items;
     }
-    // var ingridentList = recipe.direction.map(direction=> direction)
     var descriptionSteps = recipe.directions.map(direction =>
       m("div", { class: "content" }, [
-        m("h2", direction.name),
+        m("h3", direction.name),
         m("h3", direction.description)
       ])
     );
     var ingredients_list = createIngredients(recipe);
-    recipe_items.push(m("div", { class: "content" }, m("h1", "Ingredients ")))
+    recipe_items.push(m("div", { class: "content" }, m("h2", "Ingredients ")))
     var recipeIngredients = recipe_items.concat(ingredients_list);
-    recipeIngredients.push(m("div", { class: "content" }, m("h1", "Directions ")))
+    recipeIngredients.push(m("div", { class: "content" }, m("h2", "Directions ")))
     var recipeDescriptionsDirections = recipeIngredients.concat(descriptionSteps);
     recipeDescriptionsDirections.push(_make_rating_form())
     return recipeDescriptionsDirections;
