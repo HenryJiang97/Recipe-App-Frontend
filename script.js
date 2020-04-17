@@ -375,7 +375,7 @@ function register(username, password) {
       alert("Registered");
       // Add user to database
       Api.addUser(makeNewUser(username, password));
-      location.reload();
+      
     })
     .catch(e => alert(e));
 }
@@ -388,12 +388,13 @@ function signin(username, password) {
     })
     .then(user => {
       // user logged in
-      alert("Signed in");
+      alert("Signed in. Please navigate to a recipe and then to the back to the main page to see sign out and add recipes");
       signedin = true;
       userLoggedin = username;
       username = "";
+      
     })
-    .catch(e => alert(e));
+    .catch(e => alert(e))
   
 }
 
