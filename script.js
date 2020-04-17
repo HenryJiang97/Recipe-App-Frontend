@@ -391,9 +391,9 @@ function signin(username, password) {
       signedin = true;
       userLoggedin = username;
       username = "";
-      location.reload()
     })
     .catch(e => alert(e));
+  
 }
 
 function signout() {
@@ -404,7 +404,7 @@ function signout() {
       alert("Signed out");
       signedin = false;
       userLoggedin = "";
-      location.reload()
+      location.reload();
     })
     .catch(e => alert(e));
 }
