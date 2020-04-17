@@ -375,6 +375,7 @@ function register(username, password) {
       alert("Registered");
       // Add user to database
       Api.addUser(makeNewUser(username, password));
+      location.reload();
     })
     .catch(e => alert(e));
 }
