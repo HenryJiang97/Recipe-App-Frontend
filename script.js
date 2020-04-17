@@ -245,6 +245,7 @@ var SingleRecipeView = {
     // );
     var total_time = recipe.totalTime / 60;
     total_time = total_time.toFixed(2);
+    var author = testNullField(recipe.author)
     var recipe_items = [
       m("div", { class: "header" }, m("h1", recipe.title)),
       m(
@@ -258,7 +259,7 @@ var SingleRecipeView = {
             "    Yield: " +
             recipe.yield +
             "    Author: " +
-            recipe.author
+            author
         )
       ),
       m("div", { class: "content" }, m("h3", recipe.description))
@@ -290,7 +291,10 @@ function createIngredients(recipe){
   for(const direction of recipe.directions){
     if(direction.ingredients != null){
       for(const ingredient of direction.ingredients){
-        var html_ingredient =  m("div", { class: "content" }, m("h3", ingredient.amount + " " + ingredient.unit + " " + ingredient.name))
+        var amount = testNullField(ingredient.amount);
+        var unit = testNullField(ingredient.unit);
+        var name = testNullField(ingredient.name);
+        var html_ingredient =  m("div", { class: "content" }, m("h3", amount + " " + unit + " " + name))
         ingredient_list.push(html_ingredient)
       }
     }
@@ -298,6 +302,13 @@ function createIngredients(recipe){
   return ingredient_list;
 }
 
+function testNullField(field){
+  if (field == null){
+    return '';
+  }else{
+    return field;
+  }
+}
 // Login info
 var username = "";
 var password = "";
