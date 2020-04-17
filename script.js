@@ -184,10 +184,27 @@ function _make_rating_form() {
   return (
     m("div", { class: "header" }, 
       m("h2", "Rate this recipe"),
-      m("p", "Rating:"),
-      m("input[type=text]"),
+      m("div", {class: "header"},
+        m("p", "Rating:"),
+        m("input[type=text]", {
+          oninput: function(e) {
+            ratings = e.target.value;
+          }
+        }),
+      ),
+      m("div", {class: "header"},
+        m("p", "Comments:"),
+        m("input[type=text]", {
+          oninput: function(e) {
+            comments = e.target.value;
+          }
+        }),
+      ),
       _make_button("Submit", function() {
-        console.log("Submit button clicked");
+        console.log(`Ratings: ${ratings}`);
+        console.log(`Comments: ${comments}`);
+        ratings = "";
+        comments = "";
       }),
     )
   )
