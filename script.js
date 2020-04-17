@@ -179,7 +179,12 @@ function makeNewRecipe(author, name, description, style, ratings) {
 
 function _make_rating_form() {
   return (
-    m("Button")
+    m("div", { class: "header" }, 
+      m("h2", "Rate this recipe"),
+      _make_button("Submit", function() {
+        console.log("Submit button clicked");
+      }),
+    )
   )
 }
 
