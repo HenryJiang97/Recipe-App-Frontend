@@ -144,6 +144,7 @@ function makeNewRecipe(author, name, description, style, ratings) {
   };
 }
 
+
 // Api.addRecipe({
 //   "id" : null,
 //   "title" : "Chicken Bake",
@@ -179,6 +180,111 @@ function makeNewRecipe(author, name, description, style, ratings) {
 
 var ratings = 0.0;
 var comments = "";
+Api.updateRecipe( {
+  "id" : "5e996cdb9297251962927347",
+  "title" : "Creamy Chickpea Pasta With Spinach and Rosemary",
+  "description" : "Luxurious and hearty, cheap and easy, this vegetarian pasta uses mostly pantry staples, requiring just a few fresh ingredients, like baby spinach, rosemary and heavy cream. Canned chickpeas form the foundation of the dish: They’re cooked until crisp and caramelized. Half are then saved as a garnish, while the rest are simmered until they break down and thicken the sauce. You can swap out your greens or beans, and if you want to experiment with flavor, raid your spice cabinet: Ground coriander, toasted fennel seeds, coarsely crumbled pink peppercorns or a sprinkle of smoked paprika perk up the dish.",
+  "style" : null,
+  "ratings" : null,
+  "directions" : [ {
+    "id" : null,
+    "name" : "Step 1",
+    "ingredients" : null,
+    "time" : 200,
+    "temp" : 0,
+    "description" : "Bring a large pot of salted water to a boil over high.",
+    "directionType" : "PREP"
+  }, {
+    "id" : null,
+    "name" : "Step 2",
+    "ingredients" : [ {
+      "name" : "olive oil",
+      "amount" : 0.25,
+      "unit" : "CUP"
+    }, {
+      "name" : "chickpeas",
+      "amount" : 14.0,
+      "unit" : "OUNCE"
+    }, {
+      "name" : "rosemary",
+      "amount" : 2.0,
+      "unit" : "TEASPOON"
+    }, {
+      "name" : "Aleppo pepper",
+      "amount" : 0.5,
+      "unit" : "TEASPOON"
+    } ],
+    "time" : 300,
+    "temp" : 0,
+    "description" : "In a wide, deep skillet, heat the oil over medium-high. Add the chickpeas, rosemary and Aleppo pepper, if using. Season generously with salt and pepper, and cook, stirring occasionally, until chickpeas start to caramelize at their edges and pop, 5 to 7 minutes. Using a slotted spoon, transfer about half the chickpeas to a bowl. Reserve for garnish.",
+    "directionType" : "COOK"
+  }, {
+    "id" : null,
+    "name" : "Step 3",
+    "ingredients" : [ {
+      "name" : "large shallot",
+      "amount" : 1.0,
+      "unit" : null
+    }, {
+      "name" : "garlic cloves",
+      "amount" : 2.0,
+      "unit" : null
+    }, {
+      "name" : "spaghetti",
+      "amount" : 12.0,
+      "unit" : "OUNCE"
+    }, {
+      "name" : "spinach",
+      "amount" : 6.0,
+      "unit" : "OUNCE"
+    } ],
+    "time" : 360,
+    "temp" : 0,
+    "description" : "Reduce the heat to medium, add the shallots and garlic to the skillet, and season with salt and pepper. Cook, stirring occasionally, until shallots are softened, about 3 minutes. Add the heavy cream and cook until slightly thickened, about 3 minutes. Turn off the heat, stir in the spinach and season to taste with salt and pepper",
+    "directionType" : "COOK"
+  }, {
+    "id" : null,
+    "name" : "Step 4",
+    "ingredients" : [ {
+      "name" : "parmesan grated",
+      "amount" : 0.5,
+      "unit" : "CUP"
+    }, {
+      "name" : null,
+      "amount" : null,
+      "unit" : null
+    } ],
+    "time" : 900,
+    "temp" : 0,
+    "description" : "Add the pasta to the boiling water and reduce the heat to medium. Cook the pasta until a couple minutes short of al dente according to package instructions, about 5 minutes. Do not drain the pasta, but using tongs, transfer the pasta directly from the pot to the spinach and cream sauce. Add 1 cup pasta cooking water and the Parmesan, and cook over medium-high, stirring vigorously with the tongs, until the sauce is thickened and the noodles are al dente, about 2 minutes. Add a splash of pasta water to loosen sauce, if needed.Reduce the heat to medium, add the shallots and garlic to the skillet, and season with salt and pepper. Cook, stirring occasionally, until shallots are softened, about 3 minutes. Add the heavy cream and cook until slightly thickened, about 3 minutes. Turn off the heat, stir in the spinach and season to taste with salt and pepperAdd the pasta to the boiling water and reduce the heat to medium. Cook the pasta until a couple minutes short of al dente according to package instructions, about 5 minutes. Do not drain the pasta, but using tongs, transfer the pasta directly from the pot to the spinach and cream sauce. Add 1 cup pasta cooking water and the Parmesan, and cook over medium-high, stirring vigorously with the tongs, until the sauce is thickened and the noodles are al dente, about 2 minutes. Add a splash of pasta water to loosen sauce, if needed.",
+    "directionType" : "COOK"
+  }, {
+    "id" : null,
+    "name" : "Step 5",
+    "ingredients" : [ {
+      "name" : "Lemon wedges",
+      "amount" : null,
+      "unit" : null
+    }, {
+      "name" : "Salt and Black Pepper",
+      "amount" : null,
+      "unit" : null
+    } ],
+    "time" : 60,
+    "temp" : 0,
+    "description" : "Transfer to bowls, and top with reserved chickpeas, rosemary and black pepper. Serve immediately, with lemon wedges for squeezing on top.",
+    "directionType" : "COOK"
+  } ],
+  "averageRating" : 0,
+  "yield" : 4,
+  "prepTime" : 200,
+  "waitTime" : 0,
+  "totalTime" : 500,
+  "cookTime" : 300,
+  "tag" : null,
+  "author" : null
+})
+
 
 function _make_rating_form() {
   return (
