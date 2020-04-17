@@ -7,9 +7,9 @@ var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
 var userLoggedin = "";
 // Initialize userbase
 
-async function intializeUser(){
 var userSignedIn = ""
-await userbase .init({
+var signedin = true;
+userbase.init({
     appId: "44840daa-e0bc-44aa-8cf2-c89b0acdbffd"
   })
   .then(session => {
@@ -20,18 +20,15 @@ await userbase .init({
       userLoggedin = session.user.username;
       console.log("Signed in");
       console.log("User Logged in: ", session.user.username);
-      var userSignedIn = true;
+      signedin = true;
     }else{
-      var userSignedIn = false;
+      signedin = false;
     }
   })
-  .catch(e => {console.error(e)
-               return false;});
-  return userSignedIn
+  .catch(e => console.error(e));
 
-}
-var signedin = intializeUser()
-console.log(signedin)
+
+// console.log(signedin)
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // APIs
