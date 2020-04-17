@@ -177,6 +177,9 @@ function makeNewRecipe(author, name, description, style, ratings) {
 //////////////////////////////////////////////////////////////////////////////////////////
 // ViewControllers
 
+var ratings = 0.0;
+var comments = "";
+
 function _make_rating_form() {
   return (
     m("div", { class: "header" }, 
