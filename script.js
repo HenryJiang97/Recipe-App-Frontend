@@ -235,7 +235,10 @@ var SingleRecipeView = {
         )
       ),
       m("div", { class: "content" }, m("h3", recipe.description)),
-      _make_rating_form()
+      m("div",
+        _make_rating_form(),
+        m("p", "HAHAHA")
+      )
     ];
     if (recipe.directions == null) {
       return recipe_items;
