@@ -245,7 +245,10 @@ var SingleRecipeView = {
     // );
     var total_time = recipe.totalTime / 60;
     total_time = total_time.toFixed(2);
-    var author = testNullField(recipe.author)
+    var author = "Anonymous";
+    if(recipe.author != null){
+      author = recipe.author
+    }
     var recipe_items = [
       m("div", { class: "header" }, m("h1", recipe.title)),
       m(
