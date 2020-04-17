@@ -181,6 +181,8 @@ function _make_rating_form() {
   return (
     m("div", { class: "header" }, 
       m("h2", "Rate this recipe"),
+      m("p", "Rating:"),
+      m("input[type=text]"),
       _make_button("Submit", function() {
         console.log("Submit button clicked");
       }),
