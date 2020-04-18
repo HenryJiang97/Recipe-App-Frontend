@@ -7,7 +7,6 @@ var API_SERVER = "https://recipe-app-tba.herokuapp.com/";
 var userLoggedin = "";
 // Initialize userbase
 
-var userSignedIn = ""
 var signedin = true;
 userbase.init({
     appId: "44840daa-e0bc-44aa-8cf2-c89b0acdbffd"
@@ -394,7 +393,7 @@ function signin(username, password) {
     })
     .then(user => {
       // user logged in
-      alert("Signed in. Please navigate to a recipe and then to the back to the main page to see sign out and add recipes");
+      alert("Signed in.");
       signedin = true;
       userLoggedin = username;
       username = "";
